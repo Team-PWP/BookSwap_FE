@@ -19,9 +19,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src", "vite.config.ts"],
