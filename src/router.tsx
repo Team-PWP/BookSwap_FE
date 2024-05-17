@@ -1,52 +1,62 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
-import MainPage from './pages/MainPage';
-import ChattingPage from './pages/chatting/ChattingPage';
-import DetailPage from './pages/detail/DetailPage';
-import LoginPage from './pages/login/LoginPage';
-import RedirectPage from './pages/login/RedirectPage';
-import MyProductPage from './pages/product/MyProductPage';
-import UserProductPage from './pages/product/UserProductPage';
-import SellPage from './pages/sell/SellPage';
+import Header from '@/components/header';
+import MainPage from '@/pages/MainPage';
+import ChattingPage from '@/pages/chatting/ChattingPage';
+import DetailPage from '@/pages/detail/DetailPage';
+import LoginPage from '@/pages/login';
+import { RedirectPage } from '@/pages/login/RedirectPage.tsx';
+import { NickNamePage } from '@/pages/nickname/NickNamePage.tsx';
+import SellPage from '@/pages/sell/SellPage';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainPage />,
-  },
-  {
-    path: '/auth',
+    element: (
+      <Header>
+        <Outlet />
+      </Header>
+    ),
     children: [
+      {
+        index: true,
+        element: <MainPage />,
+      },
       {
         path: 'login',
         element: <LoginPage />,
       },
       {
-        path: 'redirect',
+        path: 'redirection',
         element: <RedirectPage />,
+      },
+      {
+        path: 'nickname',
+        element: <NickNamePage />,
+      },
+      {
+        path: '/chat',
+        element: <ChattingPage />,
+      },
+      {
+        path: '/sell',
+        element: <SellPage />,
+      },
+      {
+        path: '/detail',
+        element: <DetailPage />,
       },
     ],
   },
-  {
-    path: '/chatting',
-    element: <ChattingPage />,
-  },
-  //   {
-  //     path: '/product',
-  //     children: [
-  //       //   { path: '/:user', element: <UserProductPage /> },
-  //       {
-  //         path: '/my',
-  //         element: <MyProductPage />,
-  //       },
-  //     ],
-  //   },
-  {
-    path: '/sell',
-    element: <SellPage />,
-  },
-  {
-    path: '/detail',
-    element: <DetailPage />,
-  },
 ]);
+
+// //   {
+// //     path: '/product',
+// //     children: [
+// //       //   { path: '/:user', element: <UserProductPage /> },
+// //       {
+// //         path: '/my',
+// //         element: <MyProductPage />,
+// //       },
+// //     ],
+// //   },
