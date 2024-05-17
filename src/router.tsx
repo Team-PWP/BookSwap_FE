@@ -7,7 +7,9 @@ import DetailPage from '@/pages/detail/DetailPage';
 import LoginPage from '@/pages/login';
 import { RedirectPage } from '@/pages/login/RedirectPage.tsx';
 import { NickNamePage } from '@/pages/nickname/NickNamePage.tsx';
+import MyProductPage from '@/pages/product/MyProductPage.tsx';
 import SellPage from '@/pages/sell/SellPage';
+import { ShopPage } from '@/pages/shop';
 
 export const router = createBrowserRouter([
   {
@@ -35,16 +37,29 @@ export const router = createBrowserRouter([
         element: <NickNamePage />,
       },
       {
-        path: '/chat',
+        path: 'chat',
         element: <ChattingPage />,
       },
       {
-        path: '/sell',
+        path: 'sell',
         element: <SellPage />,
       },
       {
-        path: '/detail',
+        path: 'detail',
         element: <DetailPage />,
+      },
+      {
+        path: 'product',
+        // children: [
+        //   {
+        //     path: ''
+        //   }
+        // ]
+        element: <MyProductPage />,
+      },
+      {
+        path: 'shop',
+        element: <ShopPage />,
       },
     ],
   },
