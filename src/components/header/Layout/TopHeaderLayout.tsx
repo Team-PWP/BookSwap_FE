@@ -15,7 +15,13 @@ export const TopHeaderLayout: React.FC = () => {
           <Styles.MenuItem>로그인 / 회원가입</Styles.MenuItem>
         </Styles.MenuWrapper>
         <Styles.MenuWrapper>
-          <Styles.MenuItem>내상점</Styles.MenuItem>
+          <Styles.MenuItem
+            onClick={() => {
+              navigate('/shop');
+            }}
+          >
+            내상점
+          </Styles.MenuItem>
         </Styles.MenuWrapper>
       </Styles.MenuContainer>
     </Styles.TopHeaderLayout>
