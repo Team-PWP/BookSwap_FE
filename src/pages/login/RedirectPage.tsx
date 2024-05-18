@@ -1,5 +1,5 @@
 import { BASE_URI } from '@/constants/URI.ts';
-import { useOauth2Redirect } from '@/hooks/useOauth2Redirect.ts';
+import { authApi } from '@/apis/auth/auth.api.ts';
 
 export const RedirectPage = () => {
   const CODE: string | null = new URLSearchParams(window.location.search).get(
@@ -7,7 +7,7 @@ export const RedirectPage = () => {
   );
   console.log(`${BASE_URI}/oauth2?code=${CODE}`);
 
-  useOauth2Redirect(CODE);
+  authApi(CODE);
 
   return (
     <>
