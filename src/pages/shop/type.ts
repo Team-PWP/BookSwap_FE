@@ -1,14 +1,14 @@
 export interface UserInfoLayoutProps {
   shopImg: string;
   nickname?: string;
-  userInfo: UserInfo;
+  // userInfo: UserInfo;
 }
 
 export interface UserInfo {
-  id: number;
+  userId: number;
   nickname: string;
   email: string;
-  userName: string;
+  username: string;
 }
 
 export interface NicknameSectionProps {
@@ -20,6 +20,6 @@ export interface EmailSectionProps {
 }
 
 export interface UserInfoContainerProps {
-  nickname?: string | undefined;
-  userInfo: UserInfo;
+  nickname?: string;
+  // userInfo: UserInfo;
 }
