@@ -5,7 +5,7 @@ export interface AuthState {
   setAccessToken: (token: string) => void;
   logOut: () => void;
 }
-export const useStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set) => ({
   // access Token
   accessToken: '',
 
