@@ -1,6 +1,6 @@
 export interface MyInfoResponse {
-  id: number;
+  userId: number;
   nickname: string;
   email: string;
-  userName: string;
+  username: string;
 }
