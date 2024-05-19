@@ -4,12 +4,13 @@ import { UserInfoLayoutProps } from '@/pages/shop/type.ts';
 
 export const UserInfoLayout: React.FC<UserInfoLayoutProps> = ({
   shopImg,
-  userInfo,
+  // userInfo,
 }) => {
   return (
     <Styles.UserInfoLayout>
       <Styles.UserImg src={shopImg} />
-      <UserInfoContainer userInfo={userInfo} />
+      {/*<UserInfoContainer userInfo={userInfo} />*/}
+      <UserInfoContainer />
     </Styles.UserInfoLayout>
   );
 };
