@@ -1,11 +1,11 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Header from '@/components/header';
-import MainPage from '@/pages/MainPage';
 import ChattingPage from '@/pages/chatting/ChattingPage';
 import DetailPage from '@/pages/detail/DetailPage';
 import LoginPage from '@/pages/login';
 import { RedirectPage } from '@/pages/login/RedirectPage.tsx';
+import MainPage from '@/pages/main';
 import { NickNamePage } from '@/pages/nickname/NickNamePage.tsx';
 import MyProductPage from '@/pages/product/MyProductPage.tsx';
 import SellPage from '@/pages/sell/SellPage';
