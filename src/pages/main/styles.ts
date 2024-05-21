@@ -1,23 +1,5 @@
 import styled from '@emotion/styled';
 
-export const GlobalFreeMarketLayout = styled.div`
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  margin: 0 1rem;
-`;
-
-export const ContentsLayout = styled.div`
-  background-color: #fff;
-  margin: 1rem 0;
-`;
-
-export const BlankLayout = styled.div`
-  background-color: #f5f5f5;
-`;
-
 export const GlobalFreeMarketContainer = styled.div`
   background-color: #e1eef8;
   width: 100%;
