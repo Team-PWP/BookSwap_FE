@@ -9,6 +9,15 @@ export const GlobalFreeMarketLayout = styled.div`
   margin: 0 1rem;
 `;
 
+export const ContentsLayout = styled.div`
+  background-color: #fff;
+  margin: 1rem 0;
+`;
+
+export const BlankLayout = styled.div`
+  background-color: #f5f5f5;
+`;
+
 export const GlobalFreeMarketContainer = styled.div`
   background-color: #e1eef8;
   width: 100%;
@@ -68,12 +77,6 @@ export const SendButton = styled.img`
   align-items: center;
   margin-right: 0.2rem;
 `;
-export const ContentsLayout = styled.div`
-  background-color: yellow;
-`;
-export const BlankLayout = styled.div`
-  background-color: #f5f5f5;
-`;
 
 export const EmojiButton = styled.img`
   width: 1.5rem;
@@ -106,4 +109,53 @@ export const FreeMarketEnterButton = styled.div`
     background-color: #4c89ff;
     color: #fff;
   }
+`;
+
+/* MainProduct */
+
+export const MainProductContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: space-between;
+  /* flex-direction: item-be */
+  /* margin: 1rem 1rem; */
+`;
+export const MainProductItem = styled.div`
+  display: flex;
+  width: 12.5rem;
+  height: 17.1875rem;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e1eef8;
+`;
+
+export const ProductInfoContainer = styled.div`
+  display: flex;
+  padding: 0.625rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  /* flex: 1 0 0; */
+  align-self: stretch;
+  border: 1px solid #f0f0f0;
+`;
+
+export const ProductImage = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: gray;
+  /* flex: 1 0 0; */
+  align-self: stretch;
+  width: 12.5rem;
+  height: 12.5rem;
+`;
+
+export const ProductInfo = styled.div`
+  display: flex;
+  padding: 0.1875rem 0rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 `;
