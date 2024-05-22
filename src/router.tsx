@@ -2,7 +2,7 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Header from '@/components/header';
 import ChattingPage from '@/pages/chatting/ChattingPage';
-import DetailPage from '@/pages/detail/DetailPage';
+import DetailPage from '@/pages/detail';
 import LoginPage from '@/pages/login';
 import { RedirectPage } from '@/pages/login/RedirectPage.tsx';
 import MainPage from '@/pages/main';
@@ -64,14 +64,3 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
-
-// //   {
-// //     path: '/product',
-// //     children: [
-// //       //   { path: '/:user', element: <UserProductPage /> },
-// //       {
-// //         path: '/my',
-// //         element: <MyProductPage />,
-// //       },
-// //     ],
-// //   },
