@@ -1,6 +1,6 @@
 import * as Styles from '../styles';
 
-const UploadInfo = ({ date }) => {
+const UploadInfo = ({ date }: { date: string }) => {
   return (
     <>
       <Styles.ProductDetailUploadInfo>

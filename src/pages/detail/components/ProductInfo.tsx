@@ -1,20 +1,25 @@
-import { useEffect, useState } from 'react';
-
 import * as Styles from '../styles';
 import UploadInfo from './UploadInfo';
-import { DetailCheck, DetailInfo } from '@/apis/detail/detail.api';
 import ClockIcon from '@/assets/Clock-Icon.svg';
 import PickIcon from '@/assets/Pick-Icon-hv.svg';
-import { useArticleStore } from '@/store/useArticleStore';
 
-const ProductInfo = ({ Title, Img, BuyoutPrice, Time, date }) => {
-  // const { articleId, setArticleId } = useArticleStore();
-
+const ProductInfo = ({
+  Title,
+  Img,
+  BuyoutPrice,
+  Time,
+  date,
+}: {
+  Title: string;
+  Img: string;
+  BuyoutPrice: number;
+  Time: string;
+  date: string;
+}) => {
   return (
     <>
       <Styles.ProductDetailInfoContainer>
         <Styles.ProductDetailImageContainer>
-          {/* <Styles.ProductDetailImage>상품이미지</Styles.ProductDetailImage> */}
           <Styles.ProductDetailImage src={Img} />
         </Styles.ProductDetailImageContainer>
         <Styles.ProductDetailInfo>
