@@ -50,7 +50,7 @@ export const ProductDetailImageContainer = styled.div`
   align-items: center;
 `;
 
-export const ProductDetailImage = styled.div`
+export const ProductDetailImage = styled.img`
   width: 18.75rem;
   height: 18.75rem;
   flex-shrink: 0;
