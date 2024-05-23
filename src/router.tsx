@@ -18,8 +18,9 @@ export const router = createBrowserRouter([
     path: '/',
     element: (
       <>
-        <Header />
-        <Outlet />
+        <Header>
+          <Outlet />
+        </Header>
       </>
     ),
     children: [

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const Chat = () => {
+interface ChatProps {
+  content: string;
+}
+
+const Chat: React.FC<ChatProps> = ({ content }) => {
   return <ChatBox>{content}</ChatBox>;
 };
 

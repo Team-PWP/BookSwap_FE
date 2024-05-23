@@ -6,4 +6,6 @@ const ChatHead = () => {
 
 export default ChatHead;
 
-const ChatHeadWrapper = styled.div``;
+const ChatHeadWrapper = styled.div`
+  height: 50px;
+`;
