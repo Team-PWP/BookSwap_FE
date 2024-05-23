@@ -33,6 +33,10 @@ jobs:
           echo VITE_APP_REST_API_KEY=${{ secrets.VITE_APP_REST_API_KEY }} >> .env
           echo VITE_APP_REDIRECT_URI=${{ secrets.VITE_APP_REDIRECT_URI }} >> .env
           echo VITE_APP_BASE_URL=${{ secrets.VITE_APP_BASE_URL }} >> .env
+          pwd
+          echo "Files in the current directory:"
+          ls -al
+          echo "Contents of the .env file:"
           cat .env
 
       - name: Configure AWS credentials
