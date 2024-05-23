@@ -1,25 +1,24 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import * as Styles from '../styles';
 import ProductInfo from './ProductInfo';
 import { DetailCheck } from '@/apis/detail/detail.api';
 
 const ProductDetail = () => {
+  const { articleId } = useParams() as { articleId: string };
   const [productTitle, setProductTitle] = useState('');
   const [productContent, setProductContent] = useState('');
   const [productBuyoutPrice, setProductBuyoutPrice] = useState(0);
-  //   const [productCreatedAt, setProductCreatedAt] = useState('');
-  //   const [productMinPrice, setProductMinPrice] = useState(0);
-  //   const [productBidStartAt, setProductBidStartAt] = useState('');
-  //   const [productBidEndAt, setProductBidEndAt] = useState('');
   const [ProductImageUrls, setProductImageUrls] = useState<string[]>([]);
   const [remainingTime, setRemainingTime] = useState('');
   const [formattedStartDate, setFormattedStartDate] = useState('');
 
+  const id = parseInt(articleId);
   useEffect(() => {
     const fetchProductInfo = async () => {
       try {
-        const data = await DetailCheck(6);
+        const data = await DetailCheck(id);
         setProductTitle(data.title);
         setProductContent(data.content);
         setProductBuyoutPrice(data.buyoutPrice);
@@ -32,7 +31,7 @@ const ProductDetail = () => {
       }
     };
     fetchProductInfo();
-  }, []);
+  }, [articleId]);
 
   /**
    * 날짜 추출 후 포맷 변경
