@@ -5,9 +5,10 @@ import axios from 'axios';
 
 import { BASE_URI } from '@/constants/URI.ts';
 
-export const useOauth2Redirect = (code: string | null) => {
+export const authApi = (code: string | null) => {
   const navigate = useNavigate();
 
+  // 인가코드 받아서 토큰 요청
   useEffect(() => {
     if (code) {
       axios
@@ -18,13 +19,14 @@ export const useOauth2Redirect = (code: string | null) => {
           const accessToken = res.headers.authorization;
           console.log(accessToken);
 
-          // Save the token to localStorage
+          // 로컬 스토리지에 토큰 저장
           localStorage.setItem('accessToken', accessToken);
 
-          navigate('/nickname');
+          navigate(-2);
         })
         .catch((error) => {
           console.error('Error during OAuth2 redirect:', error);
+          // logOut();
         });
     }
   }, [code, navigate]);

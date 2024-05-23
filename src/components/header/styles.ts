@@ -53,7 +53,7 @@ export const MenuWrapper = styled.li`
     //margin: 0 1rem;
     margin: auto;
   }
-  &:first-child:before {
+  &:first-of-type:before {
     display: none;
   }
 `;

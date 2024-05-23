@@ -1,6 +1,6 @@
 import * as Styles from './styles';
-import { KAKAO_AUTH_URL } from '@/apis/OAuth';
 import Logo from '@/assets/kakao.svg';
+import { KAKAO_AUTH_URL } from '@/constants/URI';
 
 const LoginPage = () => {
   const HandlerKakaoLogin = () => {
