@@ -20,7 +20,6 @@ export const useUserInfoStore = create<UserInfoState>((set) => ({
   setNickname: (nickname: string) => set({ nickname }),
   setEmail: (email: string) => set({ email }),
   setUsername: (username: string) => set({ username }),
-
 }));
 //   setUserId: () => set((state) => ({})),
 //   setNickname: () => set((state) => ({})),

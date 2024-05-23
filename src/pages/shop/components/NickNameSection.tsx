@@ -16,7 +16,6 @@ export const NicknameSection: React.FC<NicknameSectionProps> = ({
     const reNickName: string | null = prompt('변경할 닉네임을 입력해주세요');
     console.log(reNickName);
 
-
     if (reNickName) {
       try {
         const request = { nickname: reNickName };
