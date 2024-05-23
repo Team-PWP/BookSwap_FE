@@ -1,6 +1,8 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Header from '@/components/header';
+import ChatlistPage from '@/pages/chatlist/ChatlistPage';
+import ChatTestPage from '@/pages/chatting/ChatTestPage';
 import ChattingPage from '@/pages/chatting/ChattingPage';
 import DetailPage from '@/pages/detail';
 import LoginPage from '@/pages/login';
@@ -15,11 +17,21 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <Header>
-        <Outlet />
-      </Header>
+      <>
+        <Header>
+          <Outlet />
+        </Header>
+      </>
     ),
     children: [
+      {
+        path: 'chatlist',
+        element: <ChatlistPage />,
+      },
+      {
+        path: 'chatroom/:id',
+        element: <ChattingPage />,
+      },
       {
         index: true,
         element: <MainPage />,
@@ -37,10 +49,6 @@ export const router = createBrowserRouter([
         element: <NickNamePage />,
       },
       {
-        path: 'chat',
-        element: <ChattingPage />,
-      },
-      {
         path: 'sell',
         element: <SellPage />,
       },
@@ -50,16 +58,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'product',
-        // children: [
-        //   {
-        //     path: ''
-        //   }
-        // ]
         element: <MyProductPage />,
       },
       {
         path: 'shop',
         element: <ShopPage />,
+      },
+      {
+        path: 'chattest',
+        element: <ChatTestPage />,
       },
     ],
   },
