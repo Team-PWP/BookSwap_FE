@@ -1,14 +1,12 @@
 import * as Styles from '../styles';
 
-const UploadInfo = () => {
+const UploadInfo = ({ date }) => {
   return (
     <>
       <Styles.ProductDetailUploadInfo>
         <Styles.ProductDetailDate>
           <Styles.ProductUserInfoTitle>올린 날짜 :</Styles.ProductUserInfoTitle>
-          <Styles.ProductUserInfoText>
-            2024년 5월 25일
-          </Styles.ProductUserInfoText>
+          <Styles.ProductUserInfoText>{date}</Styles.ProductUserInfoText>
         </Styles.ProductDetailDate>
         <Styles.ProductDetailUser>
           <Styles.ProductUserInfoTitle>올린 유저 :</Styles.ProductUserInfoTitle>
