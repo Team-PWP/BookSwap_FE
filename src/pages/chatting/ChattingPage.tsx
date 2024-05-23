@@ -3,20 +3,27 @@ import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import ChatBottom from '@/components/chat/ChatBottom';
-import ChatHead from '@/components/chat/ChatHead';
-import ChatMain from '@/components/chat/ChatMain';
+import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { Client, IMessage } from '@stomp/stompjs';
 
 const ChattingPage: React.FC = () => {
   interface RouteParams {
-    id: string;
+    roomid: string;
     [key: string]: string | undefined;
   }
 
-  const { id } = useParams<RouteParams>();
-  const [isConnected, setIsConnected] = useState(false);
-  const [, setStompClient] = useState<Client | null>(null);
+  const { roomid } = useParams<RouteParams>();
+  const setRoomId = useRoomInfoStore((state) => state.setRoomId);
+  const [, setIsConnected] = useState(false);
+  const [stompClient, setStompClient] = useState<Client | null>(null);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (roomid) {
+      const roomIdNumber = parseInt(roomid);
+      setRoomId(roomIdNumber);
+    }
+  }, [roomid, setRoomId]);
 
   useEffect(() => {
     const socket = new WebSocket('ws://52.79.101.132:8080/chat');
@@ -27,9 +34,10 @@ const ChattingPage: React.FC = () => {
       },
       onConnect: () => {
         console.log('Connected');
+        console.log('roomId: ', roomid);
         setIsConnected(true);
 
-        client.subscribe(`/sub/chat/room/${id}`, (message: IMessage) => {
+        client.subscribe(`/sub/chat/room/${roomid}`, (message: IMessage) => {
           console.log('Received message:', message.body);
         });
       },
@@ -52,22 +60,55 @@ const ChattingPage: React.FC = () => {
         client.deactivate();
       }
     };
-  }, [id]);
+  }, [roomid]);
+
+  const handleSendMessage = () => {
+    if (stompClient && stompClient.connected) {
+      stompClient.publish({
+        destination: `/pub/chat/room/${roomid}`,
+        body: JSON.stringify({ message }),
+      });
+      setMessage('');
+    }
+  };
 
   return (
-    <ChattingWarpper>
-      <ChatHead />
-      <ChatMain />
-      <ChatBottom />
-      <div>
-        <h2>WebSocket Status: {isConnected ? 'Connected' : 'Disconnected'}</h2>
-      </div>
-    </ChattingWarpper>
+    <ChattingWrapper>
+      <ChatRoomHeader>
+        <ChatHead />
+      </ChatRoomHeader>
+      <ChatRoomMain>
+        <ChatMain />
+      </ChatRoomMain>
+      <ChatRoomInput>
+        <input
+          type='text'
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleSendMessage();
+            }
+          }}
+        />
+        <button onClick={handleSendMessage}>Send</button>
+      </ChatRoomInput>
+    </ChattingWrapper>
   );
 };
 
 export default ChattingPage;
 
-const ChattingWarpper = styled.div`
+const ChattingWrapper = styled.div`
   margin-top: 10rem;
 `;
+
+const ChatRoomHeader = styled.div``;
+
+const ChatRoomMain = styled.div``;
+
+const ChatRoomInput = styled.div``;
+
+const ChatHead = () => <div>Chat Head</div>;
+
+const ChatMain = () => <div>Chat Main</div>;

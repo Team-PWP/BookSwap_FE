@@ -1,14 +1,20 @@
 import { useState } from 'react';
 
-const ChatInput = () => {
+import { useRoomInfoStore } from '@/store/useRoomInfoStore';
+import { useUserInfoStore } from '@/store/useUserInfoStore';
+
+const ChatInput = ({ stompClient }: { stompClient: any }) => {
   const [message, setMessage] = useState('');
+  const roomId = useRoomInfoStore((state) => state.roomId);
+  const userId = useUserInfoStore((state) => state.userId);
 
   const sendMessage = () => {
-    const roomId = 'YOUR_ROOM_ID';
+    if (!stompClient) return;
+    if (!message.trim()) return;
 
     const chatMessageRequest = {
       chatRoomId: roomId,
-      userId: 'YOUR_USER_ID',
+      userId: userId,
       message: message.trim(),
     };
 
@@ -17,6 +23,7 @@ const ChatInput = () => {
       {},
       JSON.stringify(chatMessageRequest)
     );
+    setMessage('');
   };
 
   return (

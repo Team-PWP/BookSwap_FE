@@ -5,7 +5,7 @@ import { GlobalLayout } from '@/styles/GlobalLayout';
 import { Client } from '@stomp/stompjs';
 
 const MainPage: React.FC = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const [, setIsConnected] = useState(false);
   const stompClient = useRef<Client | null>(null);
 
   useEffect(() => {
@@ -41,9 +41,6 @@ const MainPage: React.FC = () => {
   return (
     <GlobalLayout>
       <MainProduct />
-      <div>
-        <h2>WebSocket Status: {isConnected ? 'Connected' : 'Disconnected'}</h2>
-      </div>
     </GlobalLayout>
   );
 };

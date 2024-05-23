@@ -2,7 +2,6 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Header from '@/components/header';
 import ChatlistPage from '@/pages/chatlist/ChatlistPage';
-import ChatTestPage from '@/pages/chatting/ChatTestPage';
 import ChattingPage from '@/pages/chatting/ChattingPage';
 import DetailPage from '@/pages/detail';
 import LoginPage from '@/pages/login';
@@ -29,7 +28,7 @@ export const router = createBrowserRouter([
         element: <ChatlistPage />,
       },
       {
-        path: 'chatroom/:id',
+        path: 'chatroom/:roomid',
         element: <ChattingPage />,
       },
       {
@@ -63,10 +62,6 @@ export const router = createBrowserRouter([
       {
         path: 'shop',
         element: <ShopPage />,
-      },
-      {
-        path: 'chattest',
-        element: <ChatTestPage />,
       },
     ],
   },
