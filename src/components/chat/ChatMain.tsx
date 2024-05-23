@@ -1,15 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ChatMain = () => {
-    return (
-        <ChatMainWrapper>
-            chatmain
-        </ChatMainWrapper>
-    );
-}
+  return (
+    <ChatMainWrapper>
+      <ChatLogBox>
+        <Chat />
+      </ChatLogBox>
+    </ChatMainWrapper>
+  );
+};
 
 export default ChatMain;
 
-const ChatMainWrapper = styled.div`
+const ChatMainWrapper = styled.div``;
 
-`;
+const ChatLogBox = styled.div``;

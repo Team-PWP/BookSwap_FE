@@ -1,15 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ChatHead = () => {
-    return (
-        <ChatHeadWrapper>
-            Chathead
-        </ChatHeadWrapper>
-    );
-}
+  return <ChatHeadWrapper>chathead</ChatHeadWrapper>;
+};
 
 export default ChatHead;
 
-const ChatHeadWrapper = styled.div`
-
-`;
+const ChatHeadWrapper = styled.div``;
