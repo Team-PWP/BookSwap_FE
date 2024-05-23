@@ -12,7 +12,7 @@ const ProductInfo = ({
 }: {
   Title: string;
   Img: string;
-  BuyoutPrice: number;
+  BuyoutPrice: string;
   Time: string;
   date: string;
 }) => {
