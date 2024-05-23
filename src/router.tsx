@@ -8,7 +8,7 @@ import { RedirectPage } from '@/pages/login/RedirectPage.tsx';
 import MainPage from '@/pages/main';
 import { NickNamePage } from '@/pages/nickname/NickNamePage.tsx';
 import MyProductPage from '@/pages/product/MyProductPage.tsx';
-import SellPage from '@/pages/sell/SellPage';
+import SellPage from '@/pages/sell';
 import { ShopPage } from '@/pages/shop';
 
 export const router = createBrowserRouter([
