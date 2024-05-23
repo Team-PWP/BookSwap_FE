@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
+import { useUserInfoStore } from '@/store/useUserInfoStore';
 import { Client, IMessage } from '@stomp/stompjs';
 
 const ChattingPage: React.FC = () => {
@@ -14,9 +15,15 @@ const ChattingPage: React.FC = () => {
 
   const { roomid } = useParams<RouteParams>();
   const setRoomId = useRoomInfoStore((state) => state.setRoomId);
+  let userId = useUserInfoStore((state) => state.userId);
+  userId = 2; // 임시로 userId 설정
+
   const [, setIsConnected] = useState(false);
   const [stompClient, setStompClient] = useState<Client | null>(null);
   const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState<
+    { nickname: string; message: string }[]
+  >([]);
 
   useEffect(() => {
     if (roomid) {
@@ -37,8 +44,16 @@ const ChattingPage: React.FC = () => {
         console.log('roomId: ', roomid);
         setIsConnected(true);
 
-        client.subscribe(`/sub/chat/room/${roomid}`, (message: IMessage) => {
-          console.log('Received message:', message.body);
+        client.subscribe(`/topic/chat/${roomid}`, (message: IMessage) => {
+          const receivedMessage = JSON.parse(message.body);
+          console.log('Received message:', receivedMessage);
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              nickname: receivedMessage.nickname,
+              message: receivedMessage.message,
+            },
+          ]);
         });
       },
       onStompError: (frame) => {
@@ -64,9 +79,14 @@ const ChattingPage: React.FC = () => {
 
   const handleSendMessage = () => {
     if (stompClient && stompClient.connected) {
+      const chatMessageRequest = {
+        chatRoomId: roomid,
+        userId: userId,
+        message: message,
+      };
       stompClient.publish({
-        destination: `/pub/chat/room/${roomid}`,
-        body: JSON.stringify({ message }),
+        destination: `/app/chat.sendMessage`,
+        body: JSON.stringify(chatMessageRequest),
       });
       setMessage('');
     }
@@ -78,7 +98,11 @@ const ChattingPage: React.FC = () => {
         <ChatHead />
       </ChatRoomHeader>
       <ChatRoomMain>
-        <ChatMain />
+        {messages.map((msg, index) => (
+          <div key={index}>
+            <strong>{msg.nickname}:</strong> {msg.message}
+          </div>
+        ))}
       </ChatRoomMain>
       <ChatRoomInput>
         <input
@@ -105,10 +129,22 @@ const ChattingWrapper = styled.div`
 
 const ChatRoomHeader = styled.div``;
 
-const ChatRoomMain = styled.div``;
+const ChatRoomMain = styled.div`
+  max-height: 500px;
+  overflow-y: auto;
+`;
 
-const ChatRoomInput = styled.div``;
+const ChatRoomInput = styled.div`
+  display: flex;
+  input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px;
+    font-size: 16px;
+  }
+`;
 
 const ChatHead = () => <div>Chat Head</div>;
-
-const ChatMain = () => <div>Chat Main</div>;
