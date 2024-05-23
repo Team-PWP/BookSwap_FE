@@ -25,16 +25,16 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        index: true,
+        element: <MainPage />,
+      },
+      {
         path: 'chatlist',
         element: <ChatlistPage />,
       },
       {
         path: 'chatroom/:id',
         element: <ChattingPage />,
-      },
-      {
-        index: true,
-        element: <MainPage />,
       },
       {
         path: 'login',
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
         element: <SellPage />,
       },
       {
-        path: 'detail',
+        path: 'detail/:articleId',
         element: <DetailPage />,
       },
       {

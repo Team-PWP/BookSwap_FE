@@ -1,15 +1,63 @@
-import * as Styles from '../styles';
+import { useEffect, useState } from 'react';
 
-const ProductItem = () => {
+import * as Styles from '../styles';
+import { ProductItemProps } from '../type';
+
+const ProductItem: React.FC<ProductItemProps> = ({
+  ProductImg,
+  title,
+  price,
+  time,
+  onClick,
+  // jd,
+}) => {
+  const [remainingTime, setRemainingTime] = useState<string>('');
+
+  const calculateRemainingTime = (ProductTime: string | number | Date) => {
+    const startTime = new Date(ProductTime);
+    const now = new Date();
+
+    const diffInMillis = now.getTime() - startTime.getTime();
+    const diffInMinutes = Math.floor(diffInMillis / 60000);
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    const diffInDays = Math.floor(diffInHours / 24);
+    const diffInMonths = Math.floor(diffInDays / 30);
+
+    const minutes = diffInMinutes % 60;
+    const hours = diffInHours % 24;
+    const days = diffInDays % 30;
+
+    if (diffInMonths > 0) {
+      return `${diffInMonths}달 ${days}일 전`;
+    } else if (diffInDays > 0) {
+      return `${diffInDays}일 ${hours}시간 전`;
+    } else if (diffInHours > 0) {
+      return `${diffInHours}시간 전`;
+    } else {
+      return `${minutes}분 전`;
+    }
+  };
+
+  useEffect(() => {
+    const newRemainingTime = calculateRemainingTime(time);
+    setRemainingTime(newRemainingTime);
+  }, [time]);
+
+  const displayTitle = title === 'string' ? '제목없음' : title;
+
+  const handleClick = () => {
+    onClick();
+  };
+
   return (
     <>
-      <Styles.MainProductItem>
-        <Styles.ProductImage>상품 이미지</Styles.ProductImage>
+      <Styles.MainProductItem onClick={handleClick}>
+        <Styles.ProductImage src={ProductImg} alt='상품 사진' />
         <Styles.ProductInfoContainer>
-          <div>토토로 인형 26년산</div>
+          <Styles.ProductInfoTitle>{displayTitle}</Styles.ProductInfoTitle>
           <Styles.ProductInfo>
-            <div>26,500원</div>
-            <div>1 시간 전</div>
+            <div>{price.toLocaleString()} 원</div>
+            <div>{remainingTime}</div>
           </Styles.ProductInfo>
           {/* <Styles.ProductInfo>
             <div>경매 시작 시간</div>

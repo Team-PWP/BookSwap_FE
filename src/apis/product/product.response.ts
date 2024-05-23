@@ -1,12 +1,14 @@
-export interface ProductItemProps {
-  ProductImg: string;
-  price: number;
-  time: string;
-  title: string;
-  onClick: () => void;
+export interface AllProductResponse {
+  hasNext: boolean;
+  data: Product[];
 }
 
-export interface ProductTypes {
+export interface AllProductParameters {
+  page: number;
+  size: number;
+}
+
+export interface Product {
   articleId: number;
   userNickname: string;
   title: string;
