@@ -110,6 +110,7 @@ export const MainProductItem = styled.div`
   flex-direction: column;
   align-items: center;
   border: 1px solid #e1eef8;
+  cursor: pointer;
 `;
 
 export const ProductInfoContainer = styled.div`
@@ -123,7 +124,15 @@ export const ProductInfoContainer = styled.div`
   border: 1px solid #f0f0f0;
 `;
 
-export const ProductImage = styled.div`
+export const ProductInfoTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 원하는 최대 너비 설정 */
+  max-width: 160px;
+`;
+
+export const ProductImage = styled.img`
   align-items: center;
   justify-content: center;
   display: flex;
