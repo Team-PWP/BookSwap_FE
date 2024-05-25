@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as Styles from '../styles';
+import ProductDelete from './ProductDelete';
 import ProductInfo from './ProductInfo';
 import { DetailCheck } from '@/apis/detail/detail.api';
 
@@ -10,7 +11,7 @@ const ProductDetail = () => {
   const [productTitle, setProductTitle] = useState('');
   const [productContent, setProductContent] = useState('');
   const [productBuyoutPrice, setProductBuyoutPrice] = useState(0);
-  const [ProductImageUrls, setProductImageUrls] = useState<string[]>([]);
+  const [ProductImageUrls, setProductImageUrls] = useState<File[]>([]);
   const [remainingTime, setRemainingTime] = useState('');
   const [formattedStartDate, setFormattedStartDate] = useState('');
 
@@ -31,7 +32,7 @@ const ProductDetail = () => {
       }
     };
     fetchProductInfo();
-  }, [articleId]);
+  }, [id]);
 
   /**
    * 날짜 추출 후 포맷 변경
@@ -80,7 +81,7 @@ const ProductDetail = () => {
         <ProductInfo
           Title={productTitle}
           BuyoutPrice={productBuyoutPrice.toLocaleString()}
-          Img={ProductImageUrls[0]}
+          Img={ProductImageUrls}
           Time={remainingTime}
           date={formattedStartDate}
         />
@@ -92,6 +93,7 @@ const ProductDetail = () => {
             {productContent}
           </Styles.ProductDetailContentsItem>
         </Styles.ProductDetailContentsContainer>
+        <ProductDelete />
       </Styles.ProductDetailContainer>
     </>
   );

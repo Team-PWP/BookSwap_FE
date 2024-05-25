@@ -13,9 +13,15 @@ const UploadInfo = ({ date }: { date: string }) => {
           <Styles.ProductUserInfoText>김토토로</Styles.ProductUserInfoText>
         </Styles.ProductDetailUser>
         <Styles.ProductUserButtonContainer>
-          <Styles.ProductUserInfoButton>채팅하기</Styles.ProductUserInfoButton>
-          <Styles.ProductUserInfoButton>즉시구매</Styles.ProductUserInfoButton>
-          <Styles.ProductUserInfoButton>입찰하기</Styles.ProductUserInfoButton>
+          <Styles.ProductUserInfoButton color='#ffb347'>
+            채팅하기
+          </Styles.ProductUserInfoButton>
+          <Styles.ProductUserInfoButton color='#32cd32'>
+            즉시구매
+          </Styles.ProductUserInfoButton>
+          <Styles.ProductUserInfoButton color='#6495ed'>
+            입찰하기
+          </Styles.ProductUserInfoButton>
         </Styles.ProductUserButtonContainer>
       </Styles.ProductDetailUploadInfo>
     </>
