@@ -21,9 +21,3 @@ export async function ProductSell(request: ProductSellRequest): Promise<void> {
   });
   return productSell.data;
 }
-
-// export async function ProductSell(request: ProductSellRequest): Promise<void> {
-//   const productSell = await axiosClient.post('/api/article', { ...request });
-//   console.log(productSell.data);
-//   return productSell.data;
-// }
