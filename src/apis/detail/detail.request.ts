@@ -6,7 +6,7 @@ export interface detailInfoRequest {
   createdAt: string;
   bidStartAt: string;
   bidEndAt: string;
-  imageUrls: string[];
+  imageUrls: File[];
   articleId: number;
   pageNumber: number;
 }
