@@ -37,9 +37,10 @@ export const ProductSellImageContainer = styled.div`
 
 export const ProductSellImageTitle = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   gap: 0.625rem;
+  text-align: left;
 `;
 
 export const ProductSellImageText = styled.div`
@@ -258,4 +259,36 @@ export const ProductSellSubmitButton = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+`;
+
+// input test
+export const StyledFileInput = styled.div`
+  display: flex;
+  gap: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  width: 400px;
+  align-items: center;
+  text-align: center;
+`;
+
+export const AttachmentButton = styled.div`
+  width: fit-content;
+  padding: 16px;
+  background-color: #191b27;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+export const Input = styled.input`
+  display: none;
+`;
+
+export const AttachedFile = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  color: #999;
 `;
