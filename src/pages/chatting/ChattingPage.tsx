@@ -15,8 +15,7 @@ const ChattingPage: React.FC = () => {
 
   const { roomid } = useParams<RouteParams>();
   const setRoomId = useRoomInfoStore((state) => state.setRoomId);
-  let userId = useUserInfoStore((state) => state.userId);
-  userId = 2; // 임시로 userId 설정
+  const userId = useUserInfoStore((state) => state.userId);
 
   const [, setIsConnected] = useState(false);
   const [stompClient, setStompClient] = useState<Client | null>(null);
