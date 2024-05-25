@@ -50,7 +50,7 @@ export const ProductDetailImageContainer = styled.div`
   align-items: center;
 `;
 
-export const ProductDetailImage = styled.img`
+export const ProductDetailImage = styled.div`
   width: 18.75rem;
   height: 18.75rem;
   flex-shrink: 0;
@@ -181,14 +181,20 @@ export const ProductUserInfoText = styled.div`
 export const ProductUserInfoButton = styled.div`
   display: flex;
   height: 2.625rem;
-  width: 7.5rem;
+  width: 7rem;
+  background-color: #fff;
+  border-radius: 0.3125rem;
   padding: 0rem 1.25rem;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
   cursor: pointer;
-
-  background-color: #ffcc4d;
+  color: ${(props) => props.color};
+  border: 1px solid ${(props) => props.color};
+  &:hover {
+    background-color: ${(props) => props.color};
+    color: #fff;
+  }
 `;
 
 export const ProductUserButtonContainer = styled.div`
@@ -200,4 +206,14 @@ export const ProductUserButtonContainer = styled.div`
 export const ProductInfoIcon = styled.img`
   width: 1rem;
   height: 1rem;
+`;
+
+export const ProductDetailDeleteContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin: 4rem 2.5rem;
+  align-items: center;
+  gap: 0.625rem;
+  flex: 1 0 0;
+  align-self: stretch;
 `;

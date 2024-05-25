@@ -1,26 +1,68 @@
+import { useEffect } from 'react';
+
 import * as Styles from '../styles';
+import { ProductInfoProps } from '../type';
 import UploadInfo from './UploadInfo';
 import ClockIcon from '@/assets/Clock-Icon.svg';
 import PickIcon from '@/assets/Pick-Icon-hv.svg';
 
-const ProductInfo = ({
+const ProductInfo: React.FC<ProductInfoProps> = ({
   Title,
   Img,
   BuyoutPrice,
   Time,
   date,
-}: {
-  Title: string;
-  Img: string;
-  BuyoutPrice: string;
-  Time: string;
-  date: string;
 }) => {
+  useEffect(() => {
+    const preview = () => {
+      if (Img.length === 0) return;
+
+      const imgContainer = document.querySelector(
+        '.img__box'
+      ) as HTMLDivElement;
+      if (!imgContainer) return;
+
+      Img.forEach((file, index) => {
+        // Check if file is a Blob or File object
+        if (file instanceof Blob) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const img = document.createElement('img') as HTMLImageElement;
+            img.src = reader.result as string; // Data URL로 설정
+            img.alt = `Product Image ${index}`;
+            img.style.width = '300px';
+            imgContainer.appendChild(img);
+          };
+          reader.readAsDataURL(file); // 파일을 Data URL로 읽기
+        } else if (typeof file === 'string') {
+          // If file is a URL, directly use it
+          const img = document.createElement('img') as HTMLImageElement;
+          img.src = file;
+          img.alt = `Product Image ${index}`;
+          img.style.width = '300px';
+          imgContainer.appendChild(img);
+        }
+      });
+    };
+
+    preview();
+  }, [Img]);
+
   return (
     <>
       <Styles.ProductDetailInfoContainer>
         <Styles.ProductDetailImageContainer>
-          <Styles.ProductDetailImage src={Img} />
+          {/* <Styles.ProductDetailImage src={Img} /> */}
+          <Styles.ProductDetailImage className='img__box'></Styles.ProductDetailImage>
+          {/* <div className='img__box'>
+            {Img.map((file, index) => (
+              <img
+                key={index}
+                src={URL.createObjectURL(file)}
+                alt={index.toString()}
+              />
+            ))}
+          </div> */}
         </Styles.ProductDetailImageContainer>
         <Styles.ProductDetailInfo>
           <Styles.ProductDetailInfoTitle>

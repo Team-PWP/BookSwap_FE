@@ -34,16 +34,23 @@ const AllProduct: React.FC = () => {
 
   return (
     <>
-      {products.map((product) => (
-        <ProductItem
-          key={product.articleId}
-          ProductImg={product.imageUrl[0]}
-          price={product.buyoutPrice}
-          time={product.createdAt}
-          title={product.title}
-          onClick={() => navigateToProductDetail(product.articleId)}
-        />
-      ))}
+      {products.map((product) => {
+        const productImage =
+          product.imageUrl && product.imageUrl.length > 0
+            ? product.imageUrl[0]
+            : 'defaultImageUrl';
+
+        return (
+          <ProductItem
+            key={product.articleId}
+            ProductImg={productImage}
+            price={product.buyoutPrice}
+            time={product.createdAt}
+            title={product.title}
+            onClick={() => navigateToProductDetail(product.articleId)}
+          />
+        );
+      })}
     </>
   );
 };

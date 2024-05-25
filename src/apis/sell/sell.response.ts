@@ -1,4 +1,4 @@
-export interface detailInfoRequest {
+export interface productSellResponse {
   title: string;
   content: string;
   buyoutPrice: number;
@@ -6,7 +6,5 @@ export interface detailInfoRequest {
   createdAt: string;
   bidStartAt: string;
   bidEndAt: string;
-  imageUrls: File[];
-  articleId: number;
-  pageNumber: number;
+  imageUrl: File[];
 }
