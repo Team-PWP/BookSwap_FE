@@ -1,6 +1,14 @@
+import { useState } from 'react';
+
 import * as Styles from '../styles';
+import BiddingModal from '@/components/bid/BiddingModal';
 
 const UploadInfo = ({ date }: { date: string }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <Styles.ProductDetailUploadInfo>
@@ -19,11 +27,16 @@ const UploadInfo = ({ date }: { date: string }) => {
           <Styles.ProductUserInfoButton color='#32cd32'>
             즉시구매
           </Styles.ProductUserInfoButton>
-          <Styles.ProductUserInfoButton color='#6495ed'>
+          <Styles.ProductUserInfoButton color='#6495ed' onClick={openModal}>
             입찰하기
           </Styles.ProductUserInfoButton>
         </Styles.ProductUserButtonContainer>
       </Styles.ProductDetailUploadInfo>
+      <BiddingModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        articleId={123}
+      />
     </>
   );
 };
