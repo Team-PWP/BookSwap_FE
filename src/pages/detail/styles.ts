@@ -54,7 +54,7 @@ export const ProductDetailImage = styled.div`
   width: 18.75rem;
   height: 18.75rem;
   flex-shrink: 0;
-  background-color: #929292;
+  background-color: #fff;
 `;
 
 export const PageNavBar = styled.div`
