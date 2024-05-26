@@ -227,12 +227,12 @@ export const ProductActionBidContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 80%;
+  margin: 2rem 0;
 `;
 
 export const BidTable = styled.div`
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 `;
 
 export const BidTableRow = styled.div`
