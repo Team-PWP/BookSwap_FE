@@ -33,7 +33,8 @@ const ChatRoomWrapper = styled.div`
   margin-bottom: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer; // 마우스 포인터가 손가락 모양으로 변하도록 설정
+  cursor: pointer;
+  width: 90%;
 `;
 
 const ChatTitle = styled.div`

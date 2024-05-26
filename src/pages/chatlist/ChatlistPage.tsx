@@ -53,5 +53,9 @@ const ChatlistPage: React.FC = () => {
 export default ChatlistPage;
 
 const ChatlistWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
 `;

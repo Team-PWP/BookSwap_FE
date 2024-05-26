@@ -37,14 +37,18 @@ const GlobalFreeMarketLayout = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 1rem;
 `;
 
 const ContentsLayout = styled.div`
   background-color: #fff;
-  margin: 1rem 0;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 const BlankLayout = styled.div`
   background-color: #f5f5f5;
+  justify-content: center;
+  align-items: center;
 `;
