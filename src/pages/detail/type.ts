@@ -17,4 +17,6 @@ export interface ProductInfoProps {
 export interface ProductBidProps {
   minPrice: number;
   bidTime: string;
+  // articleId: string;
+  // bidPrice: number;
 }
