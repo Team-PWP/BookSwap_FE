@@ -42,4 +42,4 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Upload to S3
-        run: aws s3 sync dist s3://swapfront --region ap-northeast-2
+        run: aws s3 sync dist s3://swapfront-bucket --region ap-northeast-2
