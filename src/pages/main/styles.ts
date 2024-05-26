@@ -150,3 +150,74 @@ export const ProductInfo = styled.div`
   align-items: center;
   align-self: stretch;
 `;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1rem 0;
+`;
+
+export const MyPageNation = styled.div`
+  .pagination {
+    /* 페이지네이션 컴포넌트의 스타일 */
+    display: flex;
+    width: 50vw;
+    min-width: 555px;
+    padding: 70px 16px 16px 16px;
+  }
+
+  .page-item {
+    /* 페이지 항목의 스타일 */
+    cursor: pointer;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    margin-right: 4px;
+    padding: 0px 8px 0px 8px;
+
+    &:hover {
+      background-color: #e3e6e8;
+    }
+  }
+
+  .active {
+    /* 활성 상태의 스타일 */
+    background-color: #4c88ff;
+    color: white;
+
+    &:hover {
+      background-color: #4c88ff;
+    }
+  }
+
+  .break {
+    /* '...' 이후의 컴포넌트 스타일 */
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+    border-radius: 3px;
+    margin-right: 4px;
+    padding: 0px 8px 0px 8px;
+  }
+
+  .previous {
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+    border-radius: 3px;
+    margin-right: 4px;
+    padding: 0px 8px 0px 8px;
+  }
+`;
