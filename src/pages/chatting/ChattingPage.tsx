@@ -7,6 +7,7 @@ import { chatlog } from '@/apis/chat/chatlog.api';
 import ChatHead from '@/components/chat/ChatHead';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
+import { GlobalLayout } from '@/styles/GlobalLayout';
 import { Client, IMessage } from '@stomp/stompjs';
 
 const ChattingPage: React.FC = () => {
@@ -126,44 +127,44 @@ const ChattingPage: React.FC = () => {
   };
 
   return (
-    <ChattingWrapper>
-      <ChatRoomHeader>
-        <ChatHead />
-      </ChatRoomHeader>
-      <ChatRoomMain>
-        {chatLog.map((log, index) => (
-          <div key={`log-${index}`}>
-            <strong>{log.nickname}:</strong> {log.message}
-          </div>
-        ))}
-        {messages.map((msg, index) => (
-          <div key={`msg-${index}`}>
-            <strong>{msg.nickname}:</strong> {msg.message}
-          </div>
-        ))}
-      </ChatRoomMain>
-      <ChatRoomInput>
-        <input
-          type='text'
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              handleSendMessage();
-            }
-          }}
-        />
-        <button onClick={handleSendMessage}>Send</button>
-      </ChatRoomInput>
-    </ChattingWrapper>
+    <GlobalLayout>
+      <ChattingWrapper>
+        <ChatRoomHeader>
+          <ChatHead />
+        </ChatRoomHeader>
+        <ChatRoomMain>
+          {chatLog.map((log, index) => (
+            <div key={`log-${index}`}>
+              <strong>{log.nickname}:</strong> {log.message}
+            </div>
+          ))}
+          {messages.map((msg, index) => (
+            <div key={`msg-${index}`}>
+              <strong>{msg.nickname}:</strong> {msg.message}
+            </div>
+          ))}
+        </ChatRoomMain>
+        <ChatRoomInput>
+          <input
+            type='text'
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleSendMessage();
+              }
+            }}
+          />
+          <button onClick={handleSendMessage}>Send</button>
+        </ChatRoomInput>
+      </ChattingWrapper>
+    </GlobalLayout>
   );
 };
 
 export default ChattingPage;
 
-const ChattingWrapper = styled.div`
-  margin-top: 10rem;
-`;
+const ChattingWrapper = styled.div``;
 
 const ChatRoomHeader = styled.div``;
 

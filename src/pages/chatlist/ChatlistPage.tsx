@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { chatRoomList } from '@/apis/chat/chatroom.api';
 import ChatRoom from '@/components/chatlist/ChatRoom';
+import { GlobalLayout } from '@/styles/GlobalLayout';
 
 interface ChatRoomData {
   chatRoomId: number;
@@ -34,16 +35,18 @@ const ChatlistPage: React.FC = () => {
   }, [page, size]);
 
   return (
-    <ChatlistWrapper>
-      {chatRooms.map((room) => (
-        <ChatRoom
-          key={room.chatRoomId}
-          id={room.chatRoomId}
-          name={room.title}
-          lastMessage={`Article ID: ${room.articleId}`}
-        />
-      ))}
-    </ChatlistWrapper>
+    <GlobalLayout>
+      <ChatlistWrapper>
+        {chatRooms.map((room) => (
+          <ChatRoom
+            key={room.chatRoomId}
+            id={room.chatRoomId}
+            name={room.title}
+            lastMessage={`Article ID: ${room.articleId}`}
+          />
+        ))}
+      </ChatlistWrapper>
+    </GlobalLayout>
   );
 };
 
