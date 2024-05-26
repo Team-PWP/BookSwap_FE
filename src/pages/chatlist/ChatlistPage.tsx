@@ -20,9 +20,9 @@ const ChatlistPage: React.FC = () => {
     const fetchChatRooms = async () => {
       try {
         const response = await chatRoomList(page, size);
-        console.log('Response:', response);
-        if (Array.isArray(response)) {
-          setChatRooms(response);
+        console.log('Response:', response.data);
+        if (Array.isArray(response.data)) {
+          setChatRooms(response.data);
         } else {
           console.error('Error: response.data is not an array');
         }
