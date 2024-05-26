@@ -11,7 +11,7 @@ const AllProduct: React.FC = () => {
 
   const fetchProducts = async () => {
     const parameters = {
-      page: 1,
+      page: 0,
       size: 9,
     };
 

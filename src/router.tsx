@@ -34,6 +34,7 @@ export const router = createBrowserRouter([
       { path: 'detail/:articleId', element: <DetailPage /> },
       { path: 'product', element: <MyProductPage /> },
       { path: 'shop', element: <ShopPage /> },
+      { path: 'wishlist', element: <WishListPage /> },
     ],
   },
 ]);

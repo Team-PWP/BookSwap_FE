@@ -28,8 +28,8 @@ const WishListPage: React.FC = () => {
       try {
         const response = await getWishlist(page, size);
         console.log('Response:', response);
-        if (Array.isArray(response)) {
-          setWishlist(response);
+        if (Array.isArray(response.data as WishlistComponent[])) {
+          setWishlist(response.data as WishlistComponent[]);
         } else {
           console.error('Error: response is not an array');
         }

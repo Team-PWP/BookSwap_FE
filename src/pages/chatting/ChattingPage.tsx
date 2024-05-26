@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { chatlog } from '@/apis/chat/chatlog.api';
-
 import ChatHead from '@/components/chat/ChatHead';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
@@ -43,8 +42,8 @@ const ChattingPage: React.FC = () => {
           const response = await chatlog(page, size, parseInt(roomid));
           console.log(roomid);
           console.log('Response:', response);
-          if (Array.isArray(response.data)) {
-            setChatLog(response.data);
+          if (Array.isArray(response.data as ChatLog[])) {
+            setChatLog(response.data as ChatLog[]);
           } else {
             console.error('Error: response.data is not an array');
           }

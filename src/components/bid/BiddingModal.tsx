@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
+import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -10,20 +11,19 @@ Modal.setAppElement('#root');
 type BiddingModalProps = {
   isOpen: boolean;
   onRequestClose: () => void;
-  articleId: number;
 };
 
 const BiddingModal: React.FC<BiddingModalProps> = ({
   isOpen,
   onRequestClose,
-  articleId,
 }) => {
+  const { articleId } = useParams<{ articleId: string }>();
   const [price, setPrice] = useState<number | string>('');
 
   const handleSubmit = async () => {
     try {
       if (typeof price === 'number' && price > 0) {
-        await Bidding(articleId, price);
+        await Bidding(Number(articleId), price);
         alert('입찰이 성공적으로 완료되었습니다.');
         onRequestClose();
       } else {
