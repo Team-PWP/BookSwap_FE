@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 
-import styled from 'styled-components';
-
 import { Bidding } from '@/apis/bid/bid.api.ts';
+import { useAuctionStore } from '@/store/useAuctionStore';
+import styled from '@emotion/styled';
 
 Modal.setAppElement('#root');
 
@@ -18,6 +18,7 @@ const BiddingModal: React.FC<BiddingModalProps> = ({
   onRequestClose,
   articleId,
 }) => {
+  const { setNewBidPrice } = useAuctionStore();
   const [price, setPrice] = useState<number | string>('');
 
   const handleSubmit = async () => {
@@ -25,6 +26,7 @@ const BiddingModal: React.FC<BiddingModalProps> = ({
       if (typeof price === 'number' && price > 0) {
         await Bidding(articleId, price);
         alert('입찰이 성공적으로 완료되었습니다.');
+        setNewBidPrice(price);
         onRequestClose();
       } else {
         alert('유효한 가격을 입력해주세요.');
