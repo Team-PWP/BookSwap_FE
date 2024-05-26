@@ -54,7 +54,7 @@ const ProductDetail = () => {
       }
     };
     fetchProductSeller();
-  }, [id]);
+  }, [id, setSellerId]);
   /**
    * 날짜 추출 후 포맷 변경
    * 게시물 작성 날짜 출력
@@ -131,8 +131,13 @@ const ProductDetail = () => {
           Img={ProductImageUrls}
           Time={remainingTime}
           date={formattedStartDate}
+          // articleId={id}
         />
-        <ProductBid minPrice={productMinPrice} bidTime={bidTime} />
+        <ProductBid
+          minPrice={productMinPrice}
+          bidTime={bidTime}
+          // articleId={id}
+        />
         <Styles.ProductDetailContentsContainer>
           <Styles.ProductDetailContentsTitle>
             상품 정보
