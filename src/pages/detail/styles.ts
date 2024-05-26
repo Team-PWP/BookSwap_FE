@@ -217,3 +217,77 @@ export const ProductDetailDeleteContainer = styled.div`
   flex: 1 0 0;
   align-self: stretch;
 `;
+
+export const ProductActionBidContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem 1rem 0 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+`;
+
+export const BidTable = styled.div`
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+`;
+
+export const BidTableRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e2e2;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+export const BidTableCell = styled.div`
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  color: #4c88ff;
+
+  &:first-of-type {
+    text-align: left;
+  }
+
+  &:last-of-type {
+    text-align: right;
+  }
+`;
+
+// export const BidButton = styled.button`
+//   background-color: #4c88ff;
+//   color: #fff;
+//   border: none;
+//   border-radius: 5px;
+//   padding: 10px 20px;
+//   font-size: 1rem;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+
+//   &:hover {
+//     background-color: #3a6bcc;
+//   }
+// `;
+
+export const BidStatusList = styled.ul`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 20px;
+`;
+
+export const BidStatusItem = styled.li`
+  background-color: #f4f4f4;
+  border-left: 5px solid #4c88ff;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+`;
