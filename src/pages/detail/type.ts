@@ -13,3 +13,10 @@ export interface ProductInfoProps {
   Time: string;
   date: string;
 }
+
+export interface ProductBidProps {
+  minPrice: number;
+  bidTime: string;
+  // articleId: string;
+  // bidPrice: number;
+}
