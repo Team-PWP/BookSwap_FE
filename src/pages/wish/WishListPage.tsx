@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { getWishlist } from '@/apis/wish/wish.api';
 import Wish from '@/components/wish/Wish';
+import { GlobalLayout } from '@/styles/GlobalLayout';
 
 interface WishlistComponent {
   wishId: number;
@@ -42,11 +43,13 @@ const WishListPage: React.FC = () => {
   }, [page, size]);
 
   return (
-    <WishListWrapper>
-      {wishlist.map((wish) => (
-        <Wish key={wish.wishId} title={wish.title} />
-      ))}
-    </WishListWrapper>
+    <GlobalLayout>
+      <WishListWrapper>
+        {wishlist.map((wish) => (
+          <Wish key={wish.wishId} title={wish.title} />
+        ))}
+      </WishListWrapper>
+    </GlobalLayout>
   );
 };
 

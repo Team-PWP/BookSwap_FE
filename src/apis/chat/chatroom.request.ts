@@ -9,3 +9,10 @@ export interface chatroomlistRequest {
   page: number;
   size: number;
 }
+
+export interface chatcreateRequest {
+  articleId: number;
+  buyer: number;
+  seller: number;
+  title: string;
+}

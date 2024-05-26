@@ -12,7 +12,7 @@ interface UserInfoState {
 }
 
 export const useUserInfoStore = create<UserInfoState>((set) => ({
-  userId: 0,
+  userId: 3,
   nickname: 'nickname',
   email: 'email',
   username: 'username',

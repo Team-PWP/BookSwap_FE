@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 
 interface ProductSellState {
+  sellerId: number;
+  setSellerId: (sellerId: number) => void;
   title: string;
   setTitle: (title: string) => void;
   content: string;
@@ -20,6 +22,7 @@ interface ProductSellState {
 }
 
 export const useProductSellStore = create<ProductSellState>((set) => ({
+  sellerId: 0,
   title: 'title',
   content: 'nickname',
   buyoutPrice: 0,
@@ -28,6 +31,7 @@ export const useProductSellStore = create<ProductSellState>((set) => ({
   bidStartAt: 'bidStartAt',
   bidEndAt: 'bidEndAt',
   imageUrl: [],
+  setSellerId: (sellerId: number) => set({ sellerId }),
   setTitle: (title: string) => set({ title }),
   setContent: (content: string) => set({ content }),
   setBuyoutPrice: (buyoutPrice: number) => set({ buyoutPrice }),

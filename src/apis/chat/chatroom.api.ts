@@ -1,5 +1,5 @@
 import { axiosClient } from '../AxiosClient';
-import { chatroomlistRequest } from './chatroom.request';
+import { chatroomlistRequest, chatcreateRequest } from './chatroom.request';
 
 export async function chatRoomList(
   page: number,
@@ -10,6 +10,21 @@ export async function chatRoomList(
       page,
       size,
     },
+  });
+  return response.data;
+}
+
+export async function chatRoomCreate(
+  articleId: number,
+  buyerId: number,
+  sellerId: number,
+  title: string
+): Promise<chatcreateRequest> {
+  const response = await axiosClient.post(`/api/chatRoom`, {
+    articleId,
+    buyerId,
+    sellerId,
+    title,
   });
   return response.data;
 }

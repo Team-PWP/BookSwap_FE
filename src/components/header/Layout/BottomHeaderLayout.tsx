@@ -11,8 +11,8 @@ export const BottomHeaderLayout: React.FC = () => {
         <NavItem to='/sell' icon={SellIcon} alt='판매하기'>
           판매하기
         </NavItem>
-        <NavItem to='/products' icon={ProductIcon} alt='내물건'>
-          내물건
+        <NavItem to='/wishlist' icon={ProductIcon} alt='찜목록'>
+          찜목록
         </NavItem>
         <NavItem to='/chatlist' icon={ChatIcon} alt='채팅하기'>
           채팅하기
