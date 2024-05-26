@@ -16,14 +16,14 @@ export async function chatRoomList(
 
 export async function chatRoomCreate(
   articleId: number,
-  buyer: number,
-  seller: number,
+  buyerId: number,
+  sellerId: number,
   title: string
 ): Promise<chatcreateRequest> {
   const response = await axiosClient.post(`/api/chatRoom`, {
     articleId,
-    buyer,
-    seller,
+    buyerId,
+    sellerId,
     title,
   });
   return response.data;

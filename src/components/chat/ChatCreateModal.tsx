@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { chatRoomCreate } from '@/apis/chat/chatroom.api';
 
 interface ChatCreateModalProps {
@@ -21,12 +23,16 @@ const ChatCreateModal: React.FC<ChatCreateModalProps> = ({
   sellerId,
   title,
 }) => {
+  const navigate = useNavigate();
+
   if (!isOpen) return null;
 
   const handleStart = async () => {
+    console.log(articleId, buyerId, sellerId, title);
     try {
-      await chatRoomCreate(articleId, buyerId, sellerId, title);
+      const roomId = await chatRoomCreate(articleId, buyerId, sellerId, title);
       onStart();
+      navigate(`/chatroom/${roomId}`);
     } catch (error) {
       console.error('Failed to create chat room:', error);
     }

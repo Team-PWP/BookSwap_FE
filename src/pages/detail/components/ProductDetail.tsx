@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import * as Styles from '../styles';
 import ProductDelete from './ProductDelete';
 import ProductInfo from './ProductInfo';
-import { DetailCheck } from '@/apis/detail/detail.api';
+import { DetailCheck, getProductSellerId } from '@/apis/detail/detail.api';
+import { useProductSellStore } from '@/store/useProductSellStore';
 
 const ProductDetail = () => {
   const { articleId } = useParams() as { articleId: string };
@@ -14,6 +15,7 @@ const ProductDetail = () => {
   const [ProductImageUrls, setProductImageUrls] = useState<File[]>([]);
   const [remainingTime, setRemainingTime] = useState('');
   const [formattedStartDate, setFormattedStartDate] = useState('');
+  const setSellerId = useProductSellStore((state) => state.setSellerId);
 
   const id = parseInt(articleId);
   useEffect(() => {
@@ -34,6 +36,17 @@ const ProductDetail = () => {
     fetchProductInfo();
   }, [id]);
 
+  useEffect(() => {
+    const fetchProductSeller = async () => {
+      try {
+        const response = await getProductSellerId(id);
+        setSellerId(response.userId);
+      } catch (error) {
+        console.error('상품 정보 받아오기 실패 :', error);
+      }
+    };
+    fetchProductSeller();
+  }, [id]);
   /**
    * 날짜 추출 후 포맷 변경
    * 게시물 작성 날짜 출력

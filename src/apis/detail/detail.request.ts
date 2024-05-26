@@ -10,3 +10,8 @@ export interface detailInfoRequest {
   articleId: number;
   pageNumber: number;
 }
+
+export interface productSellerIdRequest {
+  userId: number;
+  sellerId: number;
+}

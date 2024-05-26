@@ -14,6 +14,7 @@ const UploadInfo = ({ date }: { date: string }) => {
 
   const userId = useUserInfoStore((state) => state.userId);
   const title = useProductSellStore((state) => state.title);
+  const sellerId = useProductSellStore((state) => state.sellerId);
 
   const openBiddingModal = () => setIsBiddingModalOpen(true);
   const closeBiddingModal = () => setIsBiddingModalOpen(false);
@@ -64,7 +65,7 @@ const UploadInfo = ({ date }: { date: string }) => {
         onCancel={closeChatModal}
         articleId={Number(articleId)}
         buyerId={userId}
-        sellerId={456}
+        sellerId={sellerId}
         title={title}
       />
     </>
