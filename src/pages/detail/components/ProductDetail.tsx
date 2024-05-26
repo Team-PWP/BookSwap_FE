@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as Styles from '../styles';
+import ProductBid from './ProductBid';
 import ProductDelete from './ProductDelete';
 import ProductInfo from './ProductInfo';
 import { DetailCheck, getProductSellerId } from '@/apis/detail/detail.api';
@@ -15,6 +16,10 @@ const ProductDetail = () => {
   const [ProductImageUrls, setProductImageUrls] = useState<File[]>([]);
   const [remainingTime, setRemainingTime] = useState('');
   const [formattedStartDate, setFormattedStartDate] = useState('');
+  const [productMinPrice, setProductMinPrice] = useState<number>(0);
+  const [bidTime, setBidTime] = useState('');
+  // const [productStartDay, setProductStartDay] = useState('');
+  const [productEndDay, setProductEndDay] = useState('');
   const setSellerId = useProductSellStore((state) => state.setSellerId);
 
   const id = parseInt(articleId);
@@ -26,6 +31,9 @@ const ProductDetail = () => {
         setProductContent(data.content);
         setProductBuyoutPrice(data.buyoutPrice);
         setProductImageUrls(data.imageUrls);
+        setProductMinPrice(data.minPrice);
+        // setProductStartDay(data.bidStartAt);
+        setProductEndDay(data.bidEndAt);
 
         calculateRemainingTime(data.createdAt);
         setFormattedStartDate(formatDate(data.createdAt));
@@ -87,6 +95,32 @@ const ProductDetail = () => {
       setRemainingTime(`${minutes}분 전`);
     }
   };
+  useEffect(() => {
+    if (!productEndDay) return;
+
+    const updateRemainingTime = () => {
+      const endTime = new Date(productEndDay);
+      const now = new Date();
+
+      const diffInMillis = endTime.getTime() - now.getTime();
+      const diffInMinutes = Math.floor(diffInMillis / 60000);
+      const diffInHours = Math.floor(diffInMinutes / 60);
+      const diffInDays = Math.floor(diffInHours / 24);
+
+      const minutes = diffInMinutes % 60;
+      const hours = diffInHours % 24;
+      const days = diffInDays % 30;
+
+      setBidTime(
+        `${days.toString().padStart(2, '0')}일 ${hours.toString().padStart(2, '0')}시간 ${minutes.toString().padStart(2, '0')}분 남음`
+      );
+    };
+
+    updateRemainingTime();
+    const intervalId = setInterval(updateRemainingTime, 60000);
+
+    return () => clearInterval(intervalId);
+  }, [productEndDay]);
 
   return (
     <>
@@ -98,6 +132,7 @@ const ProductDetail = () => {
           Time={remainingTime}
           date={formattedStartDate}
         />
+        <ProductBid minPrice={productMinPrice} bidTime={bidTime} />
         <Styles.ProductDetailContentsContainer>
           <Styles.ProductDetailContentsTitle>
             상품 정보
