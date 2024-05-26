@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import WishListPage from './pages/wish/WishListPage';
 import Header from '@/components/header';
 import ChatlistPage from '@/pages/chatlist/ChatlistPage';
 import ChattingPage from '@/pages/chatting/ChattingPage';
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: 'shop',
         element: <ShopPage />,
+      },
+      {
+        path: 'wishlist',
+        element: <WishListPage />,
       },
     ],
   },
