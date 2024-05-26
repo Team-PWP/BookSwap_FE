@@ -14,6 +14,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@stomp/stompjs": "^7.0.0",
+    "@types/react-js-pagination": "^3.0.7",
     "@types/sockjs-client": "^1.5.4",
     "@types/stompjs": "^2.3.9",
     "axios": "^1.6.8",
