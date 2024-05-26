@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import { chatlog } from '@/apis/chat/chatlog.api';
+import ChatHead from '@/components/chat/ChatHead';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
 import { Client, IMessage } from '@stomp/stompjs';
@@ -13,16 +15,48 @@ const ChattingPage: React.FC = () => {
     [key: string]: string | undefined;
   }
 
+  interface ChatLog {
+    message: string;
+    userid: number;
+    nickname: string;
+    createdAt: string;
+  }
+
   const { roomid } = useParams<RouteParams>();
   const setRoomId = useRoomInfoStore((state) => state.setRoomId);
   const userId = useUserInfoStore((state) => state.userId);
-
+  const [chatLog, setChatLog] = useState<ChatLog[]>([]);
+  const [page] = useState<number>(0);
+  const size = 10;
   const [, setIsConnected] = useState(false);
   const [stompClient, setStompClient] = useState<Client | null>(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<
     { nickname: string; message: string }[]
   >([]);
+
+  useEffect(() => {
+    const fetchChatLog = async () => {
+      try {
+        if (roomid) {
+          const response = await chatlog(page, size, parseInt(roomid));
+          console.log(roomid);
+          console.log('Response:', response);
+          if (Array.isArray(response.data as ChatLog[])) {
+            setChatLog(response.data as ChatLog[]);
+          } else {
+            console.error('Error: response.data is not an array');
+          }
+        } else {
+          console.error('Error: roomid is undefined');
+        }
+      } catch (error) {
+        console.error('Error fetching chat rooms:', error);
+      }
+    };
+
+    fetchChatLog();
+  }, [page, size]);
 
   useEffect(() => {
     if (roomid) {
@@ -97,8 +131,13 @@ const ChattingPage: React.FC = () => {
         <ChatHead />
       </ChatRoomHeader>
       <ChatRoomMain>
+        {chatLog.map((log, index) => (
+          <div key={`log-${index}`}>
+            <strong>{log.nickname}:</strong> {log.message}
+          </div>
+        ))}
         {messages.map((msg, index) => (
-          <div key={index}>
+          <div key={`msg-${index}`}>
             <strong>{msg.nickname}:</strong> {msg.message}
           </div>
         ))}
@@ -145,5 +184,3 @@ const ChatRoomInput = styled.div`
     font-size: 16px;
   }
 `;
-
-const ChatHead = () => <div>Chat Head</div>;

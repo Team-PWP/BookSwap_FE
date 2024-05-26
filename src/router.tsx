@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import WishListPage from './pages/wish/WishListPage';
 import Header from '@/components/header';
 import ChatlistPage from '@/pages/chatlist/ChatlistPage';
 import ChattingPage from '@/pages/chatting/ChattingPage';
@@ -23,46 +24,17 @@ export const router = createBrowserRouter([
       </>
     ),
     children: [
-      {
-        index: true,
-        element: <MainPage />,
-      },
-      {
-        path: 'chatlist',
-        element: <ChatlistPage />,
-      },
-      {
-        path: 'chatroom/:roomid',
-        element: <ChattingPage />,
-      },
-      {
-        path: 'login',
-        element: <LoginPage />,
-      },
-      {
-        path: 'redirection',
-        element: <RedirectPage />,
-      },
-      {
-        path: 'nickname',
-        element: <NickNamePage />,
-      },
-      {
-        path: 'sell',
-        element: <SellPage />,
-      },
-      {
-        path: 'detail/:articleId',
-        element: <DetailPage />,
-      },
-      {
-        path: 'product',
-        element: <MyProductPage />,
-      },
-      {
-        path: 'shop',
-        element: <ShopPage />,
-      },
+      { index: true, element: <MainPage /> },
+      { path: 'chatlist', element: <ChatlistPage /> },
+      { path: 'chatroom/:roomid', element: <ChattingPage /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'redirection', element: <RedirectPage /> },
+      { path: 'nickname', element: <NickNamePage /> },
+      { path: 'sell', element: <SellPage /> },
+      { path: 'detail/:articleId', element: <DetailPage /> },
+      { path: 'product', element: <MyProductPage /> },
+      { path: 'shop', element: <ShopPage /> },
+      { path: 'wishlist', element: <WishListPage /> },
     ],
   },
 ]);

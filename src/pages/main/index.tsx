@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
   const stompClient = useRef<Client | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://52.79.101.132:8080/chat');
+    const socket = new WebSocket('ws://52.79.101.132:8080/chatlist');
     stompClient.current = new Client({
       webSocketFactory: () => socket,
       debug: (str) => {

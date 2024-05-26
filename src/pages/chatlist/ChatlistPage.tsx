@@ -1,27 +1,46 @@
+import { useState, useEffect } from 'react';
+
 import styled from 'styled-components';
 
+import { chatRoomList } from '@/apis/chat/chatroom.api';
 import ChatRoom from '@/components/chatlist/ChatRoom';
 
 interface ChatRoomData {
-  id: number;
-  name: string;
-  lastMessage: string;
+  chatRoomId: number;
+  articleId: number;
+  title: string;
 }
 
-const ChatRoomList: ChatRoomData[] = [
-  { id: 1, name: 'Chat Room 1', lastMessage: 'Hello there!' },
-  { id: 2, name: 'Chat Room 2', lastMessage: 'How are you?' },
-];
-
 const ChatlistPage: React.FC = () => {
+  const [chatRooms, setChatRooms] = useState<ChatRoomData[]>([]);
+  const [page] = useState<number>(0);
+  const size = 10;
+
+  useEffect(() => {
+    const fetchChatRooms = async () => {
+      try {
+        const response = await chatRoomList(page, size);
+        if (Array.isArray(response.data as ChatRoomData[])) {
+          setChatRooms(response.data as ChatRoomData[]);
+        } else {
+          console.error('Error: response.data is not an array');
+        }
+      } catch (error) {
+        console.error('Error fetching chat rooms:', error);
+      }
+    };
+
+    fetchChatRooms();
+  }, [page, size]);
+
   return (
     <ChatlistWrapper>
-      {ChatRoomList.map((room) => (
+      {chatRooms.map((room) => (
         <ChatRoom
-          key={room.id}
-          id={room.id}
-          name={room.name}
-          lastMessage={room.lastMessage}
+          key={room.chatRoomId}
+          id={room.chatRoomId}
+          name={room.title}
+          lastMessage={`Article ID: ${room.articleId}`}
         />
       ))}
     </ChatlistWrapper>
