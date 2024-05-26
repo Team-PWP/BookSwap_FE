@@ -50,5 +50,5 @@ const ChatlistPage: React.FC = () => {
 export default ChatlistPage;
 
 const ChatlistWrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 7.5rem;
 `;
