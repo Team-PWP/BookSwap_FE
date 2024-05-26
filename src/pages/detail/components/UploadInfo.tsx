@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import * as Styles from '../styles';
 import BiddingModal from '@/components/bid/BiddingModal';
 
 const UploadInfo = ({ date }: { date: string }) => {
+  const { articleId } = useParams<{ articleId: string }>();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -35,7 +37,7 @@ const UploadInfo = ({ date }: { date: string }) => {
       <BiddingModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        articleId={123}
+        articleId={Number(articleId)}
       />
     </>
   );
