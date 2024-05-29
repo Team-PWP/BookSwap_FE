@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import * as Styles from '../styles';
 import { useProductSellStore } from '@/store/useProductSellStore';
 
