@@ -109,7 +109,7 @@ export const MainProductItem = styled.div`
   height: 17.1875rem;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #e1eef8;
+  /* border-top: 1px solid #e1eef8; */
   cursor: pointer;
 `;
 
@@ -136,7 +136,8 @@ export const ProductImage = styled.img`
   align-items: center;
   justify-content: center;
   display: flex;
-  background-color: gray;
+  /* background-color: gray; */
+  border: 1px solid #e1eef8;
   /* flex: 1 0 0; */
   align-self: stretch;
   width: 12.5rem;
