@@ -1,22 +1,45 @@
 // import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import * as Styles from '../styles';
 import { ProductBidProps } from '../type';
-import { useAuctionStore } from '@/store/useAuctionStore';
+import { getArticleBidlist } from '@/apis/bid/bid.api';
+import { Bid } from '@/apis/bid/bid.request';
+import { usePageStore } from '@/store/usePageStore';
 
 const ProductBid: React.FC<ProductBidProps> = ({
   minPrice,
   //   bidPrice,
   bidTime,
 }) => {
-  const { newBidPrice } = useAuctionStore();
-  //   const [bids, setBids] = useState<string[]>([]);
-  //   const [currentBid, setCurrentBid] = useState<number>(0);
+  // const { newBidPrice } = useAuctionStore();
+  const { page } = usePageStore();
+  const [bids, setBids] = useState<Bid[]>([]);
+  const [currentBid, setCurrentBid] = useState<number>(0);
+  const { articleId } = useParams() as { articleId: string };
 
-  //   useEffect(() => {
-  //     if (newBidPrice > 0) {
-  //       setCurrentBid(newBidPrice);
-  //     }
-  //   }, [newBidPrice]);
+  console.log(bids);
+
+  const fetchProducts = useCallback(async () => {
+    const parameters = {
+      page: page,
+      size: 9,
+    };
+
+    try {
+      const bidlist = await getArticleBidlist(parameters, parseInt(articleId));
+      setBids(bidlist.data);
+      setCurrentBid(bidlist.data[0].price);
+    } catch (error) {
+      console.error('물건을 불러올 수 없음 !', error);
+    }
+  }, [page, articleId]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
 
   return (
     <>
@@ -35,8 +58,8 @@ const ProductBid: React.FC<ProductBidProps> = ({
           <Styles.BidTableRow>
             <Styles.BidTableCell>최신 입찰 가격</Styles.BidTableCell>
             <Styles.BidTableCell>
-              {/* {bidPrice.toLocaleString()}원 */}
-              {newBidPrice.toLocaleString()}원
+              {currentBid.toLocaleString()}원
+
             </Styles.BidTableCell>
           </Styles.BidTableRow>
         </Styles.BidTable>

@@ -111,6 +111,10 @@ const ProductDetail = () => {
       const hours = diffInHours % 24;
       const days = diffInDays % 30;
 
+      if (days < 0 && hours < 0 && minutes < 0) {
+        setBidTime('경매 종료');
+        return;
+      }
       setBidTime(
         `${days.toString().padStart(2, '0')}일 ${hours.toString().padStart(2, '0')}시간 ${minutes.toString().padStart(2, '0')}분 남음`
       );
