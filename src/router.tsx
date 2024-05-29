@@ -13,7 +13,7 @@ import MyProductPage from '@/pages/product/MyProductPage.tsx';
 import SellPage from '@/pages/sell';
 import { ShopPage } from '@/pages/shop';
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) {
     alert('로그인이 필요합니다.');
