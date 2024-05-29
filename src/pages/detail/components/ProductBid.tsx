@@ -40,6 +40,7 @@ const ProductBid: React.FC<ProductBidProps> = ({
     fetchProducts();
   }, [fetchProducts]);
 
+
   return (
     <>
       <Styles.ProductActionBidContainer>
@@ -58,6 +59,7 @@ const ProductBid: React.FC<ProductBidProps> = ({
             <Styles.BidTableCell>최신 입찰 가격</Styles.BidTableCell>
             <Styles.BidTableCell>
               {currentBid.toLocaleString()}원
+
             </Styles.BidTableCell>
           </Styles.BidTableRow>
         </Styles.BidTable>

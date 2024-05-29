@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import * as Styles from '../styles';
 import { useProductSellStore } from '@/store/useProductSellStore';
 
@@ -13,7 +11,6 @@ const ProductAction = () => {
     const startAt = inputStartDate + ':00.000Z';
     setSellStartAt(inputStartDate); // 상태 업데이트
     setBidStartAt(startAt);
-    console.log('시작 날짜 :', startAt);
   };
 
   const handleEndDate = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +18,6 @@ const ProductAction = () => {
     const endAt = inputEndDate + ':00.000Z';
     setEndStartAt(inputEndDate); // 상태 업데이트
     setBidEndAt(endAt);
-    console.log('종료 날짜 :', endAt);
   };
 
   return (
