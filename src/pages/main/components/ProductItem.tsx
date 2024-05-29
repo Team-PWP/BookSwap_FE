@@ -44,6 +44,11 @@ const ProductItem: React.FC<ProductItemProps> = ({
   }, [time]);
 
   const displayTitle = title === 'string' ? '제목없음' : title;
+  const formattedPrice = price.toLocaleString();
+  const displayPrice =
+    formattedPrice.length > 10
+      ? `${formattedPrice.substring(0, 10)}...`
+      : formattedPrice;
 
   const handleClick = () => {
     onClick();
@@ -56,7 +61,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
         <Styles.ProductInfoContainer>
           <Styles.ProductInfoTitle>{displayTitle}</Styles.ProductInfoTitle>
           <Styles.ProductInfo>
-            <div>{price.toLocaleString()} 원</div>
+            <div>{displayPrice} 원</div>
             <div>{remainingTime}</div>
           </Styles.ProductInfo>
           {/* <Styles.ProductInfo>
