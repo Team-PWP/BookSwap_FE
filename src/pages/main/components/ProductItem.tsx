@@ -61,7 +61,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
         <Styles.ProductInfoContainer>
           <Styles.ProductInfoTitle>{displayTitle}</Styles.ProductInfoTitle>
           <Styles.ProductInfo>
-            <div>{displayPrice} 원</div>
+            <div>{formattedPrice} 원</div>
             <div>{remainingTime}</div>
           </Styles.ProductInfo>
           {/* <Styles.ProductInfo>
