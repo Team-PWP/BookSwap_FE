@@ -1,9 +1,16 @@
 import { useState } from 'react';
 
+// import { Button, Input } from 'antd';
+import styled from 'styled-components';
+
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
 
-const ChatInput = ({ stompClient }: { stompClient: any }) => {
+type ChatInputProps = {
+  stompClient: any;
+};
+
+const ChatInput: React.FC<ChatInputProps> = ({ stompClient }) => {
   const [message, setMessage] = useState('');
   const roomId = useRoomInfoStore((state) => state.roomId);
   const userId = useUserInfoStore((state) => state.userId);
@@ -27,15 +34,22 @@ const ChatInput = ({ stompClient }: { stompClient: any }) => {
   };
 
   return (
-    <div>
+    <InputContainer>
       <input
         type='text'
+        placeholder='Enter message'
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button onClick={sendMessage}>Send</button>
-    </div>
+      <button onClick={sendMessage} disabled={!message.trim()}>
+        Send
+      </button>
+    </InputContainer>
   );
 };
 
 export default ChatInput;
+
+const InputContainer = styled.div`
+  width: 80%;
+`;

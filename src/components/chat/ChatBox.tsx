@@ -20,4 +20,11 @@ const ChatBoxWrapper = styled.div``;
 
 const NickContainer = styled.div``;
 
-const MsgContainer = styled.div``;
+const MsgContainer = styled.div`
+  display: inline-block;
+  background-color: #fadb14;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+`;

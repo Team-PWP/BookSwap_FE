@@ -134,23 +134,26 @@ const ChattingPage: React.FC = () => {
           <ChatHead />
         </ChatRoomHeader>
         <ChatRoomMain>
-          {chatLog.map((log, index) => (
-            <div key={`log-${index}`}>
-              <strong>{log.nickname}:</strong> {log.message}
-            </div>
-          ))}
-          {messages.map((msg, index) => (
-            <div key={`msg-${index}`}>
-              <strong>{msg.nickname}:</strong> {msg.message}
-            </div>
-          ))}
-          {/* {messages.map((msg, index) => (
-            <ChatBox
-              nickname={msg.nickname}
-              message={msg.message}
-              key={index}
-            />
-          ))} */}
+          {chatLog.map(
+            (log, index) =>
+              log.message.trim() && (
+                <ChatBox
+                  nickname={log.nickname}
+                  message={log.message}
+                  key={`chatLog-${index}`}
+                />
+              )
+          )}
+          {messages.map(
+            (msg, index) =>
+              msg.message.trim() && (
+                <ChatBox
+                  nickname={msg.nickname}
+                  message={msg.message}
+                  key={`messages-${index}`}
+                />
+              )
+          )}
         </ChatRoomMain>
         <ChatRoomInput>
           <input
@@ -177,7 +180,7 @@ const ChattingWrapper = styled.div``;
 const ChatRoomHeader = styled.div``;
 
 const ChatRoomMain = styled.div`
-  max-height: 500px;
+  height: 30rem;
   overflow-y: auto;
 `;
 
