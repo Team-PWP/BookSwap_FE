@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// import { Button, Input } from 'antd';
 import styled from 'styled-components';
 
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
@@ -35,15 +34,15 @@ const ChatInput: React.FC<ChatInputProps> = ({ stompClient }) => {
 
   return (
     <InputContainer>
-      <input
+      <Input
         type='text'
         placeholder='Enter message'
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button onClick={sendMessage} disabled={!message.trim()}>
+      <Button onClick={sendMessage} disabled={!message.trim()}>
         Send
-      </button>
+      </Button>
     </InputContainer>
   );
 };
@@ -52,4 +51,31 @@ export default ChatInput;
 
 const InputContainer = styled.div`
   width: 80%;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+const Button = styled.button`
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6495ed;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #4169e1;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
 `;

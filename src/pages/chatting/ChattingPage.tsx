@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Button, Input, Flex } from 'antd';
 import styled from 'styled-components';
 
 import { chatlog } from '@/apis/chat/chatlog.api';
@@ -155,9 +156,11 @@ const ChattingPage: React.FC = () => {
               )
           )}
         </ChatRoomMain>
-        <ChatRoomInput>
-          <input
+        <Flex gap='small'>
+          <Input
+            size='large'
             type='text'
+            placeholder='Enter message'
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={(e) => {
@@ -166,8 +169,10 @@ const ChattingPage: React.FC = () => {
               }
             }}
           />
-          <button onClick={handleSendMessage}>Send</button>
-        </ChatRoomInput>
+          <Button size='large' type='primary' onClick={handleSendMessage}>
+            Send
+          </Button>
+        </Flex>
       </ChattingWrapper>
     </GlobalLayout>
   );
@@ -182,17 +187,4 @@ const ChatRoomHeader = styled.div``;
 const ChatRoomMain = styled.div`
   height: 30rem;
   overflow-y: auto;
-`;
-
-const ChatRoomInput = styled.div`
-  display: flex;
-  input {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-  }
-  button {
-    padding: 10px;
-    font-size: 16px;
-  }
 `;
