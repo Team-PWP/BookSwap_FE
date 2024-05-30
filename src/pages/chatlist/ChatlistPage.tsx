@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import { chatRoomList } from '@/apis/chat/chatroom.api';
 import ChatRoom from '@/components/chatlist/ChatRoom';
 import { GlobalLayout } from '@/styles/GlobalLayout';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 interface ChatRoomData {
   chatRoomId: number;
@@ -13,6 +15,7 @@ interface ChatRoomData {
 }
 
 const ChatlistPage: React.FC = () => {
+  const navigate = useNavigate();
   const [chatRooms, setChatRooms] = useState<ChatRoomData[]>([]);
   const [page] = useState<number>(0);
   const size = 10;
@@ -37,6 +40,17 @@ const ChatlistPage: React.FC = () => {
 
   return (
     <GlobalLayout>
+      <HeaderWrapper>
+        <ButtonWrapper>
+          <ArrowLeftOutlined
+            onClick={() => {
+              navigate('/');
+            }}
+          />
+        </ButtonWrapper>
+        채팅 목록
+      </HeaderWrapper>
+
       <ChatlistWrapper>
         {chatRooms.map((room) => (
           <ChatRoom
@@ -59,4 +73,13 @@ const ChatlistWrapper = styled.div`
   margin-top: 2rem;
   align-items: center;
   justify-content: center;
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-right: 5px;
 `;
