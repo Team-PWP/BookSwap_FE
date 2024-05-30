@@ -35,7 +35,7 @@ const ChattingPage: React.FC = () => {
   const [stompClient, setStompClient] = useState<Client | null>(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<
-    { nickname: string; message: string }[]
+    { Nickname: string; message: string }[]
   >([]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const ChattingPage: React.FC = () => {
           setMessages((prevMessages) => [
             ...prevMessages,
             {
-              nickname: receivedMessage.nickname,
+              Nickname: receivedMessage.nickname,
               message: receivedMessage.message,
             },
           ]);
@@ -139,7 +139,7 @@ const ChattingPage: React.FC = () => {
             (log, index) =>
               log.message.trim() && (
                 <ChatBox
-                  nickname={log.nickname}
+                  Nickname={log.nickname}
                   message={log.message}
                   key={`chatLog-${index}`}
                 />
@@ -149,7 +149,7 @@ const ChattingPage: React.FC = () => {
             (msg, index) =>
               msg.message.trim() && (
                 <ChatBox
-                  nickname={msg.nickname}
+                  Nickname={msg.Nickname}
                   message={msg.message}
                   key={`messages-${index}`}
                 />
@@ -180,7 +180,9 @@ const ChattingPage: React.FC = () => {
 
 export default ChattingPage;
 
-const ChattingWrapper = styled.div``;
+const ChattingWrapper = styled.div`
+  background-color: #f0f2f5;
+`;
 
 const ChatRoomHeader = styled.div``;
 
