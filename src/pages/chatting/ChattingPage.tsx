@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Button, Input, Flex } from 'antd';
 import styled from 'styled-components';
 
 import { chatlog } from '@/apis/chat/chatlog.api';
+import ChatBox from '@/components/chat/ChatBox';
 import ChatHead from '@/components/chat/ChatHead';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
@@ -33,7 +35,7 @@ const ChattingPage: React.FC = () => {
   const [stompClient, setStompClient] = useState<Client | null>(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<
-    { nickname: string; message: string }[]
+    { Nickname: string; message: string }[]
   >([]);
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const ChattingPage: React.FC = () => {
           setMessages((prevMessages) => [
             ...prevMessages,
             {
-              nickname: receivedMessage.nickname,
+              Nickname: receivedMessage.nickname,
               message: receivedMessage.message,
             },
           ]);
@@ -133,20 +135,32 @@ const ChattingPage: React.FC = () => {
           <ChatHead />
         </ChatRoomHeader>
         <ChatRoomMain>
-          {chatLog.map((log, index) => (
-            <div key={`log-${index}`}>
-              <strong>{log.nickname}:</strong> {log.message}
-            </div>
-          ))}
-          {messages.map((msg, index) => (
-            <div key={`msg-${index}`}>
-              <strong>{msg.nickname}:</strong> {msg.message}
-            </div>
-          ))}
+          {chatLog.map(
+            (log, index) =>
+              log.message.trim() && (
+                <ChatBox
+                  Nickname={log.nickname}
+                  message={log.message}
+                  key={`chatLog-${index}`}
+                />
+              )
+          )}
+          {messages.map(
+            (msg, index) =>
+              msg.message.trim() && (
+                <ChatBox
+                  Nickname={msg.Nickname}
+                  message={msg.message}
+                  key={`messages-${index}`}
+                />
+              )
+          )}
         </ChatRoomMain>
-        <ChatRoomInput>
-          <input
+        <Flex gap='small'>
+          <Input
+            size='large'
             type='text'
+            placeholder='Enter message'
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={(e) => {
@@ -155,8 +169,10 @@ const ChattingPage: React.FC = () => {
               }
             }}
           />
-          <button onClick={handleSendMessage}>Send</button>
-        </ChatRoomInput>
+          <Button size='large' type='primary' onClick={handleSendMessage}>
+            Send
+          </Button>
+        </Flex>
       </ChattingWrapper>
     </GlobalLayout>
   );
@@ -164,24 +180,13 @@ const ChattingPage: React.FC = () => {
 
 export default ChattingPage;
 
-const ChattingWrapper = styled.div``;
+const ChattingWrapper = styled.div`
+  background-color: #f0f2f5;
+`;
 
 const ChatRoomHeader = styled.div``;
 
 const ChatRoomMain = styled.div`
-  max-height: 500px;
+  height: 30rem;
   overflow-y: auto;
-`;
-
-const ChatRoomInput = styled.div`
-  display: flex;
-  input {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-  }
-  button {
-    padding: 10px;
-    font-size: 16px;
-  }
 `;

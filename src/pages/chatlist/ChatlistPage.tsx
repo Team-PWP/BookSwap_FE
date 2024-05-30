@@ -23,6 +23,7 @@ const ChatlistPage: React.FC = () => {
         const response = await chatRoomList(page, size);
         if (Array.isArray(response.data as ChatRoomData[])) {
           setChatRooms(response.data as ChatRoomData[]);
+          console.log(response.data);
         } else {
           console.error('Error: response.data is not an array');
         }
@@ -53,5 +54,9 @@ const ChatlistPage: React.FC = () => {
 export default ChatlistPage;
 
 const ChatlistWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
 `;
