@@ -9,9 +9,7 @@ const FreeMarket = () => {
         <Styles.GlobalFreeMarketTitle>
           <Styles.TitleText>Swap Chat</Styles.TitleText>
         </Styles.GlobalFreeMarketTitle>
-        <Styles.GlobalFreeMarketContents>
-          <div>강민 : 김규회 바보</div>
-        </Styles.GlobalFreeMarketContents>
+        <Styles.GlobalFreeMarketContents></Styles.GlobalFreeMarketContents>
         <Styles.InputContainer>
           <Styles.EmojiButton src={EmojiImg} />
           <Styles.InputItem type='text' />

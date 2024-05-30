@@ -4,29 +4,24 @@ import * as Styles from '../styles';
 import { useProductSellStore } from '@/store/useProductSellStore';
 
 const ProductAction = () => {
-  const [actionStartDate, setAuctionStartDate] = useState('');
-  const [actionEndDate, setAuctionEndDate] = useState('');
-
-  const { bidStartAt, setBidStartAt, bidEndAt, setBidEndAt } =
-    useProductSellStore();
+  const { setBidStartAt, setBidEndAt } = useProductSellStore();
+  const [sellStartAt, setSellStartAt] = useState<string>('');
+  const [endStartAt, setEndStartAt] = useState<string>('');
 
   const handleStartDate = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputStartDate = event.target.value;
-    setAuctionStartDate(inputStartDate);
-    setBidStartAt(inputStartDate + ':00.000Z');
-    console.log('시작 날짜 :', inputStartDate);
+    const startAt = inputStartDate + ':00.000Z';
+    setSellStartAt(inputStartDate); // 상태 업데이트
+    setBidStartAt(startAt);
   };
 
   const handleEndDate = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // const inputEndDate = event.target.value;
     const inputEndDate = event.target.value;
-    setAuctionEndDate(inputEndDate);
-    setBidEndAt(inputEndDate + ':00.000Z');
-    console.log('종료 시간 :', inputEndDate);
+    const endAt = inputEndDate + ':00.000Z';
+    setEndStartAt(inputEndDate); // 상태 업데이트
+    setBidEndAt(endAt);
   };
 
-  console.log(bidStartAt, bidEndAt);
-  // setBidEndAt(EndAt);
   return (
     <>
       <Styles.ProductSellPriceContainer>
@@ -34,11 +29,10 @@ const ProductAction = () => {
       </Styles.ProductSellPriceContainer>
       <Styles.ProductSellPriceTitleContainer>
         <Styles.ProductSellPriceTitle>시작 시간</Styles.ProductSellPriceTitle>
-
         <Styles.ProductSellPriceInputContainer
           placeholder='시작 날짜를 입력해주세요.'
           type='datetime-local'
-          value={actionStartDate}
+          value={sellStartAt}
           onChange={handleStartDate}
         />
       </Styles.ProductSellPriceTitleContainer>
@@ -49,7 +43,7 @@ const ProductAction = () => {
         <Styles.ProductSellPriceInputContainer
           placeholder='종료 날짜를 입력해주세요.'
           type='datetime-local'
-          value={actionEndDate}
+          value={endStartAt}
           onChange={handleEndDate}
         />
       </Styles.ProductSellPriceTitleContainer>
