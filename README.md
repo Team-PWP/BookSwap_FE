@@ -6,30 +6,50 @@
 애플리케이션입니다. 아래는 Node.js 버전 및 사용된 주요 라이브러리와 그
 설명입니다.
 
-## Node.js 버전: v18.17.1
+## 배포 사이트
+
+### Frontend
+
+http://swapfront-bucket.s3-website.ap-northeast-2.amazonaws.com/
+
+### Backend
+
+AWS에서 EC2를 이용해 배포
+
+## Node.js 버전: v18.17.1 이상
 
 - 그룹: team_pwp
 - 이름: swa
 
 ## 실행방법
 
-### 1. package.json에 존재하는 라이브러리를 설치합니다.
+### 1. pnpm 패키지매니저 설치
 
 ```bash
-pnpm install
+sudo npm install -g pnpm
 ```
 
-### 2. 프로젝트를 시작합니다.
+### 2. package.json에 존재하는 라이브러리를 설치합니다.
 
 ```bash
-pnpm run dev
+sudo pnpm install
 ```
+
+### 3. 프로젝트를 시작합니다.
+
+```bash
+sudo pnpm run dev
+```
+
+### npm 버전
+
+- 9.6.7 이상
 
 ## 패키지매니져 : Pnpm
 
 ### 버전
 
-- v9.0.6
+- v9.0.6 이상
 
 ### 설명
 
@@ -57,9 +77,14 @@ pnpm run dev
 
 ### Emotion
 
-- 의존성: @emotion/react, @emotion/styled
+- 의존성: @emotion/react, @emotion/styled, styled-components
 - 설명: CSS-in-JS 라이브러리로, 스타일을 JavaScript 파일 내에서 정의할 수
   있습니다.
+
+### antd
+
+- 의존성: antd, @ant-design/icons
+- 설명: CSS-in-JS 라이브러리로, 다양한 UI Components 를 사용할 수 있습니다.
 
 ### Axios
 
