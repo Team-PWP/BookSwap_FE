@@ -6,6 +6,7 @@ import ProductBid from './ProductBid';
 import ProductDelete from './ProductDelete';
 import ProductInfo from './ProductInfo';
 import { DetailCheck, getProductSellerId } from '@/apis/detail/detail.api';
+import { useBuyoutStore } from '@/store/useBuyoutStore';
 import { useProductSellStore } from '@/store/useProductSellStore';
 
 const ProductDetail = () => {
@@ -22,6 +23,7 @@ const ProductDetail = () => {
   const [productEndDay, setProductEndDay] = useState('');
   const setSellerId = useProductSellStore((state) => state.setSellerId);
 
+  const setBuyoutPrice = useBuyoutStore((state) => state.setBuyoutPrice);
   const id = parseInt(articleId);
   useEffect(() => {
     const fetchProductInfo = async () => {
@@ -37,12 +39,14 @@ const ProductDetail = () => {
 
         calculateRemainingTime(data.createdAt);
         setFormattedStartDate(formatDate(data.createdAt));
+        setBuyoutPrice(data.buyoutPrice);
+        console.log('buyoutPrice', data.buyoutPrice);
       } catch (error) {
         console.error('상품 정보 받아오기 실패 :', error);
       }
     };
     fetchProductInfo();
-  }, [id]);
+  }, [id, setBuyoutPrice]);
 
   useEffect(() => {
     const fetchProductSeller = async () => {

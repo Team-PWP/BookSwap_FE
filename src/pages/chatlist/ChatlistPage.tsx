@@ -72,15 +72,14 @@ const ChatlistWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: auto;
-  font-color: white;
 `;
 
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   height: auto;
-  font-color: white;
-  padding: 0.8rem;
+  font-size: 1.2rem;
+  margin-left: 1rem;
 `;
 
 const ButtonWrapper = styled.div`

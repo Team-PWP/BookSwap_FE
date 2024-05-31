@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import { getWishlist } from '@/apis/wish/wish.api';
 import Wish from '@/components/wish/Wish';
 import { GlobalLayout } from '@/styles/GlobalLayout';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 interface WishlistComponent {
   wishId: number;
@@ -20,6 +22,7 @@ interface WishlistComponent {
 }
 
 const WishListPage: React.FC = () => {
+  const navigate = useNavigate();
   const [wishlist, setWishlist] = useState<WishlistComponent[]>([]);
   const [page] = useState<number>(0);
   const size = 10;
@@ -44,6 +47,16 @@ const WishListPage: React.FC = () => {
 
   return (
     <GlobalLayout>
+      <WishlistHeader>
+        <ButtonWrapper>
+          <ArrowLeftOutlined
+            onClick={() => {
+              navigate('/');
+            }}
+          />
+        </ButtonWrapper>
+        찜 목록
+      </WishlistHeader>
       <WishListWrapper>
         {wishlist.map((wish) => (
           <Wish key={wish.wishId} title={wish.title} />
@@ -56,5 +69,16 @@ const WishListPage: React.FC = () => {
 export default WishListPage;
 
 const WishListWrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
+`;
+
+const WishlistHeader = styled.div`
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-right: 5px;
 `;
