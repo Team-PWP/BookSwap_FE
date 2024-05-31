@@ -10,6 +10,7 @@ import ChatHead from '@/components/chat/ChatHead';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
 import { GlobalLayout } from '@/styles/GlobalLayout';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Client, IMessage } from '@stomp/stompjs';
 
 const ChattingPage: React.FC = () => {
@@ -156,7 +157,7 @@ const ChattingPage: React.FC = () => {
               )
           )}
         </ChatRoomMain>
-        <Flex gap='small'>
+        <Flex>
           <Input
             size='large'
             type='text'
@@ -170,7 +171,7 @@ const ChattingPage: React.FC = () => {
             }}
           />
           <Button size='large' type='primary' onClick={handleSendMessage}>
-            Send
+            <ArrowRightOutlined />
           </Button>
         </Flex>
       </ChattingWrapper>
@@ -182,6 +183,7 @@ export default ChattingPage;
 
 const ChattingWrapper = styled.div`
   background-color: #f0f2f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ChatRoomHeader = styled.div``;

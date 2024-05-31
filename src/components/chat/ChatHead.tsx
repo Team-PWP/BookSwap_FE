@@ -26,7 +26,7 @@ export default ChatHead;
 
 const ChatHeadWrapper = styled.div`
   height: auto;
-  background-color: #4c89ff;
+  background-color: white;
   font-color: white;
   text-align: center;
   padding: 0.8rem;

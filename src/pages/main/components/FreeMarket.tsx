@@ -8,6 +8,7 @@ import { chatlog } from '@/apis/chat/chatlog.api';
 import ChatBox from '@/components/chat/ChatBox';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Client, IMessage } from '@stomp/stompjs';
 
 const FreeMarket: React.FC = () => {
@@ -147,7 +148,7 @@ const FreeMarket: React.FC = () => {
               )
           )}
         </ChatRoomMain>
-        <Flex gap='small'>
+        <Flex>
           <Input
             size='large'
             type='text'
@@ -161,7 +162,7 @@ const FreeMarket: React.FC = () => {
             }}
           />
           <Button size='large' type='primary' onClick={handleSendMessage}>
-            Send
+            <ArrowRightOutlined />
           </Button>
         </Flex>
       </ChattingWrapper>
