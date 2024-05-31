@@ -22,7 +22,7 @@ export const authApi = (code: string | null) => {
           // 로컬 스토리지에 토큰 저장
           localStorage.setItem('accessToken', accessToken);
 
-          navigate(-2);
+          navigate('/');
         })
         .catch((error) => {
           console.error('Error during OAuth2 redirect:', error);
