@@ -28,7 +28,7 @@ export const UserInfoContainer: React.FC<UserInfoContainerProps> = () => {
         const data = await myInfo();
 
         console.log(
-          'container.tsx: ',
+          'user info: ',
           data.userId,
           data.nickname,
           data.email,
@@ -44,12 +44,11 @@ export const UserInfoContainer: React.FC<UserInfoContainerProps> = () => {
     };
 
     fetchMyInfo();
-  }, []);
+  }, [setEmail, setNickname, setUserId, setUsername]);
 
-  console.log('container', nickname, userId, email, username);
   return (
     <Styles.UserInfoContainer>
-      <NicknameSection nickname={nickname} />
+      <NicknameSection />
       <EmailSection email={email} />
     </Styles.UserInfoContainer>
   );

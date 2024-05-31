@@ -11,10 +11,6 @@ export interface UserInfo {
   username: string;
 }
 
-export interface NicknameSectionProps {
-  nickname: string;
-}
-
 export interface EmailSectionProps {
   email?: string;
 }
