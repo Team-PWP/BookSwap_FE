@@ -10,8 +10,6 @@ interface ChatProps {
 const ChatBox: React.FC<ChatProps> = ({ Nickname, message }) => {
   const { nickname } = useUserInfoStore((state) => state);
 
-  console.log(nickname);
-
   const isSameNickname = () => {
     return Nickname === nickname;
   };

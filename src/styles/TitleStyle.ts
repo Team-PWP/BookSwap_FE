@@ -5,4 +5,5 @@ export const TitleContainer = styled.div`
   font-size: 1.5rem;
   /* margin-left: 1rem; */
   margin-bottom: 1rem;
+  display: flex;s
 `;
