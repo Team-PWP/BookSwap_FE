@@ -13,17 +13,18 @@ import { useUserInfoStore } from '@/store/useUserInfoStore';
 const AllProduct: React.FC = () => {
   const { page } = usePageStore();
   const [products, setProducts] = useState<ProductTypes[]>([]);
-  const { setNickname } = useUserInfoStore();
+  const { setNickname, setUserId } = useUserInfoStore();
   const navigate = useNavigate();
 
   const fetchNickname = useCallback(async () => {
     try {
       const data = await myInfo();
+      setUserId(data.userId);
       setNickname(data.nickname);
     } catch (error) {
       console.error('유저 정보 받아오기 실패 :', error);
     }
-  }, [setNickname]);
+  }, [setNickname, setUserId]);
 
   const fetchProducts = useCallback(async () => {
     const parameters = {
