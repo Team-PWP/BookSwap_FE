@@ -1,13 +1,9 @@
 import styled from '@emotion/styled';
 
 export const GlobalFreeMarketContainer = styled.div`
-  background-color: #e1eef8;
   width: 100%;
   height: 25rem;
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #4c89ff;
+  margin-top: 0;
 `;
 
 export const GlobalFreeMarketTitle = styled.div`
