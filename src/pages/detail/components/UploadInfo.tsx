@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import * as Styles from '../styles';
 import BiddingModal from '@/components/bid/BiddingModal';
+import MaxpriceBidModal from '@/components/bid/MaxpriceBidModal';
 import ChatCreateModal from '@/components/chat/ChatCreateModal';
 import { useProductSellStore } from '@/store/useProductSellStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
@@ -11,6 +12,7 @@ const UploadInfo = ({ date }: { date: string }) => {
   const { articleId } = useParams<{ articleId: string }>();
   const [isBiddingModalOpen, setIsBiddingModalOpen] = useState(false);
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
+  const [isMaxPriceBidModalOpen, setIsMaxPriceBidModalOpen] = useState(false);
 
   const userId = useUserInfoStore((state) => state.userId);
   const title = useProductSellStore((state) => state.title);
@@ -18,6 +20,9 @@ const UploadInfo = ({ date }: { date: string }) => {
 
   const openBiddingModal = () => setIsBiddingModalOpen(true);
   const closeBiddingModal = () => setIsBiddingModalOpen(false);
+
+  const openMaxPriceBidModal = () => setIsMaxPriceBidModalOpen(true);
+  const closeMaxPriceBidModal = () => setIsMaxPriceBidModalOpen(false);
 
   const openChatModal = () => setIsChatModalOpen(true);
   const closeChatModal = () => setIsChatModalOpen(false);
@@ -42,7 +47,10 @@ const UploadInfo = ({ date }: { date: string }) => {
           <Styles.ProductUserInfoButton color='#ffb347' onClick={openChatModal}>
             채팅하기
           </Styles.ProductUserInfoButton>
-          <Styles.ProductUserInfoButton color='#32cd32'>
+          <Styles.ProductUserInfoButton
+            color='#32cd32'
+            onClick={openMaxPriceBidModal}
+          >
             즉시구매
           </Styles.ProductUserInfoButton>
           <Styles.ProductUserInfoButton
@@ -56,6 +64,11 @@ const UploadInfo = ({ date }: { date: string }) => {
       <BiddingModal
         isOpen={isBiddingModalOpen}
         onRequestClose={closeBiddingModal}
+        articleId={Number(articleId)}
+      />
+      <MaxpriceBidModal
+        isOpen={isMaxPriceBidModalOpen}
+        onRequestClose={closeMaxPriceBidModal}
         articleId={Number(articleId)}
       />
       <ChatCreateModal
