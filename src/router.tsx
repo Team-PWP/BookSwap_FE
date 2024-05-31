@@ -8,8 +8,6 @@ import DetailPage from '@/pages/detail';
 import LoginPage from '@/pages/login';
 import { RedirectPage } from '@/pages/login/RedirectPage.tsx';
 import MainPage from '@/pages/main';
-import { NickNamePage } from '@/pages/nickname/NickNamePage.tsx';
-import MyProductPage from '@/pages/product/MyProductPage.tsx';
 import SellPage from '@/pages/sell';
 import { ShopPage } from '@/pages/shop';
 
@@ -45,7 +43,6 @@ export const router = createBrowserRouter([
       { path: 'chatroom/:roomid', element: <ChattingPage /> },
       { path: 'login', element: <LoginPage /> },
       { path: 'redirection', element: <RedirectPage /> },
-      { path: 'nickname', element: <NickNamePage /> },
       {
         path: 'sell',
         element: (
@@ -55,7 +52,6 @@ export const router = createBrowserRouter([
         ),
       },
       { path: 'detail/:articleId', element: <DetailPage /> },
-      { path: 'product', element: <MyProductPage /> },
       {
         path: 'shop',
         element: (
