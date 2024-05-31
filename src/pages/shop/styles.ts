@@ -12,6 +12,8 @@ export const ShopLayout = styled.div`
 
 export const TitleContainer = styled.div`
   padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
 
   //background-color: #bababa;
 `;
@@ -67,7 +69,7 @@ export const NicknameEdit = styled.div`
   border-radius: 0.25rem;
   &:hover {
     color: #4c89ff;
-      border-color: #4c89ff;
+    border-color: #4c89ff;
   }
 `;
 

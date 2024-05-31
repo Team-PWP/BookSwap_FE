@@ -6,7 +6,7 @@ export async function myStore(
   size: number,
   userId: number
 ): Promise<myStoreRequest> {
-  const response = await axiosClient.get(`/api/user/${userId}`, {
+  const response = await axiosClient.get(`/api/article/user/${userId}`, {
     params: {
       page,
       size,
