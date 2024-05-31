@@ -30,7 +30,7 @@ const MainProduct = () => {
           <Pagination
             activePage={activePage}
             itemsCountPerPage={9}
-            totalItemsCount={200}
+            totalItemsCount={50}
             pageRangeDisplayed={5}
             prevPageText={'‹'}
             nextPageText={'›'}

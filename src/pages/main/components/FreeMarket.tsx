@@ -5,9 +5,10 @@ import styled from 'styled-components';
 
 import * as Styles from '../styles';
 import { chatlog } from '@/apis/chat/chatlog.api';
-import ChatBox from '@/components/chat/ChatBox';
+import OpenChatBox from '@/components/chat/OpenChatBox';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Client, IMessage } from '@stomp/stompjs';
 
 const FreeMarket: React.FC = () => {
@@ -129,7 +130,7 @@ const FreeMarket: React.FC = () => {
           {chatLog.map(
             (log, index) =>
               log.message.trim() && (
-                <ChatBox
+                <OpenChatBox
                   Nickname={log.nickname}
                   message={log.message}
                   key={`chatLog-${index}`}
@@ -139,7 +140,7 @@ const FreeMarket: React.FC = () => {
           {messages.map(
             (msg, index) =>
               msg.message.trim() && (
-                <ChatBox
+                <OpenChatBox
                   Nickname={msg.Nickname}
                   message={msg.message}
                   key={`messages-${index}`}
@@ -147,7 +148,7 @@ const FreeMarket: React.FC = () => {
               )
           )}
         </ChatRoomMain>
-        <Flex gap='small'>
+        <Flex>
           <Input
             size='large'
             type='text'
@@ -161,7 +162,7 @@ const FreeMarket: React.FC = () => {
             }}
           />
           <Button size='large' type='primary' onClick={handleSendMessage}>
-            Send
+            <ArrowRightOutlined />
           </Button>
         </Flex>
       </ChattingWrapper>
@@ -173,12 +174,13 @@ export default FreeMarket;
 
 const ChattingWrapper = styled.div`
   background-color: #f0f2f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ChatRoomHeader = styled.div`
   height: auto;
-  background-color: #4c89ff;
-  font-color: white;
+  background-color: white;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0.8rem;
 `;
@@ -186,4 +188,6 @@ const ChatRoomHeader = styled.div`
 const ChatRoomMain = styled.div`
   height: 30rem;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 `;

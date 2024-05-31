@@ -118,6 +118,7 @@ export const SearchContainer = styled.div`
   display: flex;
   width: 25rem;
   height: 2.5rem;
+  border-radius: 10px;
 `;
 
 export const SearchInput = styled.input`

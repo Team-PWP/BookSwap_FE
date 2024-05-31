@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
+import { Button, Flex } from 'antd';
+
 import { chatRoomCreate } from '@/apis/chat/chatroom.api';
 
 interface ChatCreateModalProps {
@@ -47,14 +49,14 @@ const ChatCreateModal: React.FC<ChatCreateModalProps> = ({
     <div style={styles.overlay}>
       <div style={styles.modal}>
         <h2>채팅을 시작하시겠습니까?</h2>
-        <div style={styles.buttons}>
-          <button style={styles.button} onClick={handleStart}>
+        <Flex gap={'small'}>
+          <Button type='primary' style={styles.button} onClick={handleStart}>
             시작하기
-          </button>
-          <button style={styles.button} onClick={handleCancel}>
+          </Button>
+          <Button type='primary' style={styles.button} onClick={handleCancel}>
             취소
-          </button>
-        </div>
+          </Button>
+        </Flex>
       </div>
     </div>
   );
@@ -78,21 +80,12 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '8px',
     textAlign: 'center',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-  },
-  buttons: {
-    marginTop: '20px',
+    width: '300px',
+    height: '100px',
+    margin: 'auto',
     display: 'flex',
-    justifyContent: 'space-around',
-  },
-  button: {
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer',
-    borderRadius: '4px',
-    border: 'none',
-    backgroundColor: '#007BFF',
-    color: '#fff',
-    transition: 'background-color 0.3s',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 };
 
