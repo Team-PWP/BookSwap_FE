@@ -174,11 +174,12 @@ export default FreeMarket;
 
 const ChattingWrapper = styled.div`
   background-color: #f0f2f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ChatRoomHeader = styled.div`
   height: auto;
-  background-color: #4c89ff;
+  background-color: white;
   font-color: white;
   text-align: center;
   padding: 0.8rem;
@@ -187,4 +188,6 @@ const ChatRoomHeader = styled.div`
 const ChatRoomMain = styled.div`
   height: 30rem;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 `;
