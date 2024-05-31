@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import * as Styles from '../styles.ts';
 import { FixNickName } from '@/apis/shop/shop.api';
 import { useUserInfoStore } from '@/store/useUserInfoStore.ts';

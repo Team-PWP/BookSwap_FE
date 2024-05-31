@@ -10,18 +10,9 @@ import { useUserInfoStore } from '@/store/useUserInfoStore.ts';
 export const UserInfoContainer: React.FC<UserInfoContainerProps> = () => {
   // const { userId, nickname, email, username } = useUserInfoStore();
   // console.log(userId, nickname, email, username);
-  const {
-    setUserId,
-    setNickname,
-    setEmail,
-    setUsername,
-    nickname,
-    userId,
-    username,
-    email,
-  } = useUserInfoStore();
-  //
-  //
+  const { setUserId, setNickname, setEmail, setUsername, email } =
+    useUserInfoStore();
+
   useEffect(() => {
     const fetchMyInfo = async () => {
       try {
