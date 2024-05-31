@@ -45,7 +45,6 @@ const ProductItem: React.FC<ProductItemProps> = ({
 
   const displayTitle = title === 'string' ? '제목없음' : title;
   const formattedPrice = price.toLocaleString();
-  // const displayPrice =
   formattedPrice.length > 10
     ? `${formattedPrice.substring(0, 10)}...`
     : formattedPrice;

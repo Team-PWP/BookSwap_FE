@@ -6,23 +6,24 @@ import ProductItem from './ProductItem';
 import { getAllProducts } from '@/apis/product/product.api';
 import { myInfo } from '@/apis/shop/shop.api';
 import { usePageStore } from '@/store/usePageStore';
-import { useNicknameStore } from '@/store/useUserInfoStore';
+import { useUserInfoStore } from '@/store/useUserInfoStore';
+
+// import { useNicknameStore } from '@/store/useUserInfoStore';
 
 const AllProduct: React.FC = () => {
   const { page } = usePageStore();
   const [products, setProducts] = useState<ProductTypes[]>([]);
-  const { nickname, setNickname } = useNicknameStore();
+  const { setNickname } = useUserInfoStore();
   const navigate = useNavigate();
 
   const fetchNickname = useCallback(async () => {
     try {
       const data = await myInfo();
       setNickname(data.nickname);
-      console.log(nickname);
     } catch (error) {
       console.error('유저 정보 받아오기 실패 :', error);
     }
-  }, [setNickname, nickname]);
+  }, [setNickname]);
 
   const fetchProducts = useCallback(async () => {
     const parameters = {
@@ -32,7 +33,6 @@ const AllProduct: React.FC = () => {
     try {
       const products = await getAllProducts(parameters);
       setProducts(products.data);
-      console.log('불러온 물건들 :', products.data);
     } catch (error) {
       console.error('물건을 불러올 수 없음 !', error);
     }

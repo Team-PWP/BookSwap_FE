@@ -19,7 +19,6 @@ const MainProduct = () => {
     setActivePage(page);
     setPage(page - 1);
   };
-  console.log('현재페이지', page);
   return (
     <>
       <TitleContainer>오늘의 상품 추천</TitleContainer>
