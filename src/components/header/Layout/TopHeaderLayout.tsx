@@ -10,6 +10,7 @@ export const TopHeaderLayout: React.FC = () => {
     localStorage.removeItem('accessToken');
     alert('로그아웃 되었습니다.');
     navigate('/');
+    location.reload();
   };
 
   return (

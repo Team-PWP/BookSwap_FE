@@ -4,12 +4,25 @@ import { useNavigate } from 'react-router-dom';
 import { ProductTypes } from '../type';
 import ProductItem from './ProductItem';
 import { getAllProducts } from '@/apis/product/product.api';
+import { myInfo } from '@/apis/shop/shop.api';
 import { usePageStore } from '@/store/usePageStore';
+import { useNicknameStore } from '@/store/useUserInfoStore';
 
 const AllProduct: React.FC = () => {
   const { page } = usePageStore();
   const [products, setProducts] = useState<ProductTypes[]>([]);
+  const { nickname, setNickname } = useNicknameStore();
   const navigate = useNavigate();
+
+  const fetchNickname = useCallback(async () => {
+    try {
+      const data = await myInfo();
+      setNickname(data.nickname);
+      console.log(nickname);
+    } catch (error) {
+      console.error('유저 정보 받아오기 실패 :', error);
+    }
+  }, [setNickname, nickname]);
 
   const fetchProducts = useCallback(async () => {
     const parameters = {
@@ -27,7 +40,8 @@ const AllProduct: React.FC = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]);
+    fetchNickname();
+  }, [fetchProducts, fetchNickname]);
 
   const navigateToProductDetail = (articleId: number) => {
     navigate(`/detail/${articleId}`); // ProductDetail 페이지로 이동합니다.

@@ -5,13 +5,16 @@ import { EmailSection } from './EmailSection';
 import { NicknameSection } from './NickNameSection';
 import { myInfo } from '@/apis/shop/shop.api.ts';
 import { UserInfoContainerProps } from '@/pages/shop/type';
-import { useUserInfoStore } from '@/store/useUserInfoStore.ts';
+import {
+  useNicknameStore,
+  useUserInfoStore,
+} from '@/store/useUserInfoStore.ts';
 
 export const UserInfoContainer: React.FC<UserInfoContainerProps> = () => {
   // const { userId, nickname, email, username } = useUserInfoStore();
   // console.log(userId, nickname, email, username);
-  const { setUserId, setNickname, setEmail, setUsername, email } =
-    useUserInfoStore();
+  const { setUserId, setEmail, setUsername, email } = useUserInfoStore();
+  const { setNickname } = useNicknameStore();
 
   useEffect(() => {
     const fetchMyInfo = async () => {

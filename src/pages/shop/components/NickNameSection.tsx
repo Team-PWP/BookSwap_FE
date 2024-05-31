@@ -1,9 +1,9 @@
 import * as Styles from '../styles.ts';
 import { FixNickName } from '@/apis/shop/shop.api';
-import { useUserInfoStore } from '@/store/useUserInfoStore.ts';
+import { useNicknameStore } from '@/store/useUserInfoStore.ts';
 
 export const NicknameSection = () => {
-  const { nickname, setNickname } = useUserInfoStore();
+  const { nickname, setNickname } = useNicknameStore();
   // const [newNickname, setNewNickname] = useState<string>(nickname);
 
   console.log(nickname);

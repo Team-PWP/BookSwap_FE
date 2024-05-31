@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
-import { useUserInfoStore } from '@/store/useUserInfoStore';
+import { useNicknameStore } from '@/store/useUserInfoStore';
+import styled from '@emotion/styled';
 
 interface ChatProps {
   Nickname: string;
@@ -8,7 +7,7 @@ interface ChatProps {
 }
 
 const ChatBox: React.FC<ChatProps> = ({ Nickname, message }) => {
-  const { nickname } = useUserInfoStore((state) => state);
+  const { nickname } = useNicknameStore((state) => state);
 
   const isSameNickname = () => {
     return Nickname === nickname;
