@@ -15,4 +15,10 @@ export interface wishlistRequest {
   data: WishlistComponent[];
   page: number;
   size: number;
+  wishCount: number;
+}
+
+export interface addWishlistRequest {
+  articleId: number;
+  wishCount: number;
 }

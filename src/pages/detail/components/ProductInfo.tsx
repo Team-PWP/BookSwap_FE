@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import * as Styles from '../styles';
 import { ProductInfoProps } from '../type';
 import UploadInfo from './UploadInfo';
+import { addWishlist } from '@/apis/wish/wish.api';
 import ClockIcon from '@/assets/Clock-Icon.svg';
 import PickIcon from '@/assets/Pick-Icon-hv.svg';
 
@@ -13,6 +15,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   Time,
   date,
 }) => {
+  const [isWished, setIsWished] = useState(false);
+
+  const id = useParams() as { articleId: string };
+  const articleId = parseInt(id.articleId);
+
   useEffect(() => {
     const preview = () => {
       if (Img.length === 0) return;
@@ -48,6 +55,33 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
     preview();
   }, [Img]);
 
+  console.log('물건 정보의 articleId:', articleId);
+
+  useEffect(() => {
+    const fetchWishList = async () => {
+      try {
+        // 위시리스트 조회 요청을 보냅니다.
+        const response = await addWishlist(articleId);
+
+        console.log('위시리스트 조회 결과:', response);
+        // 위시리스트 조회 결과를 통해 추가적인 로직을 수행할 수 있습니다.
+      } catch (error) {
+        console.error('위시리스트 조회 중 오류 발생:', error);
+        // 오류 처리 로직 추가
+      }
+    };
+
+    if (isWished) {
+      fetchWishList();
+      setIsWished(false);
+    }
+  }, [articleId, isWished]);
+
+  const handlerWish = () => {
+    setIsWished(true);
+    alert('찜목록에 추가되었습니다.');
+  };
+
   return (
     <>
       <Styles.ProductDetailInfoContainer>
@@ -73,8 +107,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
           </Styles.ProductDetailInfoTitle>
           <Styles.ProductDetailContentsInfo>
             <Styles.ProductDetailLikeTime>
-              <Styles.ProductDetailLike>
-                <Styles.ProductInfoIcon src={PickIcon} />3
+              <Styles.ProductDetailLike onClick={handlerWish}>
+                <Styles.ProductInfoIcon src={PickIcon} />
               </Styles.ProductDetailLike>
               <Styles.ProductDetailTime>
                 <Styles.ProductInfoIcon src={ClockIcon} />

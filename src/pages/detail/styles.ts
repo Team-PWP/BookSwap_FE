@@ -127,7 +127,7 @@ export const ProductDetailLike = styled.div`
   align-self: stretch;
 
   color: #303030;
-
+  cursor: pointer;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
