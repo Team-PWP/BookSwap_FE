@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -8,12 +7,7 @@ import { getArticleBidlist } from '@/apis/bid/bid.api';
 import { Bid } from '@/apis/bid/bid.request';
 import { usePageStore } from '@/store/usePageStore';
 
-const ProductBid: React.FC<ProductBidProps> = ({
-  minPrice,
-  //   bidPrice,
-  bidTime,
-}) => {
-  // const { newBidPrice } = useAuctionStore();
+const ProductBid: React.FC<ProductBidProps> = ({ minPrice, bidTime }) => {
   const { page } = usePageStore();
   const [bids, setBids] = useState<Bid[]>([]);
   const [currentBid, setCurrentBid] = useState<number>(0);
@@ -30,7 +24,7 @@ const ProductBid: React.FC<ProductBidProps> = ({
     try {
       const bidlist = await getArticleBidlist(parameters, parseInt(articleId));
       setBids(bidlist.data);
-      setCurrentBid(bidlist.data[0].price);
+      setCurrentBid(bidlist.data[bidlist.data.length - 1].price);
     } catch (error) {
       console.error('물건을 불러올 수 없음 !', error);
     }
@@ -39,7 +33,6 @@ const ProductBid: React.FC<ProductBidProps> = ({
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
-
 
   return (
     <>
@@ -59,16 +52,9 @@ const ProductBid: React.FC<ProductBidProps> = ({
             <Styles.BidTableCell>최신 입찰 가격</Styles.BidTableCell>
             <Styles.BidTableCell>
               {currentBid.toLocaleString()}원
-
             </Styles.BidTableCell>
           </Styles.BidTableRow>
         </Styles.BidTable>
-        {/* <Styles.BidButton onClick={handleBid}>입찰하기</Styles.BidButton> */}
-        {/* <Styles.BidStatusList>
-          {bids.map((bid, index) => (
-            <Styles.BidStatusItem key={index}>{bid}</Styles.BidStatusItem>
-          ))}
-        </Styles.BidStatusList> */}
       </Styles.ProductActionBidContainer>
     </>
   );
