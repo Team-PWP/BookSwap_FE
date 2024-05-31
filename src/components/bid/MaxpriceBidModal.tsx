@@ -4,7 +4,7 @@ import { Button, Flex } from 'antd';
 
 import { Bidding } from '@/apis/bid/bid.api.ts';
 import { useAuctionStore } from '@/store/useAuctionStore';
-import { useProductSellStore } from '@/store/useProductSellStore';
+import { useBuyoutStore } from '@/store/useBuyoutStore';
 import styled from '@emotion/styled';
 
 Modal.setAppElement('#root');
@@ -21,9 +21,7 @@ const MaxpriceBidModal: React.FC<BiddingModalProps> = ({
   articleId,
 }) => {
   const { setNewBidPrice } = useAuctionStore();
-  const buyoutPrice = useProductSellStore((state) => state.buyoutPrice);
-
-  console.log('buyoutPrice', buyoutPrice);
+  const buyoutPrice = useBuyoutStore((state) => state.buyoutPrice);
 
   const handleSubmit = async () => {
     try {
