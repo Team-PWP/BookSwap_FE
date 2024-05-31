@@ -19,7 +19,7 @@ const FreeMarket: React.FC = () => {
     createdAt: string;
   }
 
-  const roomid = 1;
+  const roomid = 6;
   const setRoomId = useRoomInfoStore((state) => state.setRoomId);
   const userId = useUserInfoStore((state) => state.userId);
   const [chatLog, setChatLog] = useState<ChatLog[]>([]);
