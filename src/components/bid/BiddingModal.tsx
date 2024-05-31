@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 
+import { Button, Input, Flex } from 'antd';
+
 import { Bidding } from '@/apis/bid/bid.api.ts';
 import { useAuctionStore } from '@/store/useAuctionStore';
 import styled from '@emotion/styled';
@@ -45,7 +47,7 @@ const BiddingModal: React.FC<BiddingModalProps> = ({
       style={{
         content: {
           width: '300px',
-          height: '300px',
+          height: '200px',
           margin: 'auto',
           borderRadius: '10px',
           padding: '20px',
@@ -63,8 +65,16 @@ const BiddingModal: React.FC<BiddingModalProps> = ({
           value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
         />
-        <Button onClick={handleSubmit}>입찰하기</Button>
-        <Button onClick={onRequestClose}>취소하기</Button>
+        <ButtonContainer>
+          <Flex gap={'small'}>
+            <Button type='primary' onClick={handleSubmit}>
+              입찰하기
+            </Button>
+            <Button type='primary' onClick={onRequestClose}>
+              취소하기
+            </Button>
+          </Flex>
+        </ButtonContainer>
       </ModalContainer>
     </Modal>
   );
@@ -76,34 +86,16 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: center;
+  padding: 10px;
   background-color: white;
   border-radius: 10px;
 `;
 
-const Input = styled.input`
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
-`;
-
-const Button = styled.button`
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #6495ed;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-
-  &:hover {
-    background-color: #4169e1;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
+const ButtonContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 `;

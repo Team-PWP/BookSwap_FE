@@ -27,7 +27,7 @@ export const PCLayout = styled.div`
   }
   @media screen and (min-width: 1281px) {
     /** 데스크탑 */
-    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-columns: 1fr 3fr 1fr;
   }
 `;
 
