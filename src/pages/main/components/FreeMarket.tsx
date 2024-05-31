@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import * as Styles from '../styles';
 import { chatlog } from '@/apis/chat/chatlog.api';
-import ChatBox from '@/components/chat/ChatBox';
+import OpenChatBox from '@/components/chat/OpenChatBox';
 import { useRoomInfoStore } from '@/store/useRoomInfoStore';
 import { useUserInfoStore } from '@/store/useUserInfoStore';
 import { ArrowRightOutlined } from '@ant-design/icons';
@@ -130,7 +130,7 @@ const FreeMarket: React.FC = () => {
           {chatLog.map(
             (log, index) =>
               log.message.trim() && (
-                <ChatBox
+                <OpenChatBox
                   Nickname={log.nickname}
                   message={log.message}
                   key={`chatLog-${index}`}
@@ -140,7 +140,7 @@ const FreeMarket: React.FC = () => {
           {messages.map(
             (msg, index) =>
               msg.message.trim() && (
-                <ChatBox
+                <OpenChatBox
                   Nickname={msg.Nickname}
                   message={msg.message}
                   key={`messages-${index}`}
@@ -180,7 +180,7 @@ const ChattingWrapper = styled.div`
 const ChatRoomHeader = styled.div`
   height: auto;
   background-color: white;
-  font-color: white;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0.8rem;
 `;
