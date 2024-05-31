@@ -48,9 +48,8 @@ const ChatlistPage: React.FC = () => {
             }}
           />
         </ButtonWrapper>
-        채팅 목록
+        채팅목록
       </HeaderWrapper>
-
       <ChatlistWrapper>
         {chatRooms.map((room) => (
           <ChatRoom
@@ -70,14 +69,18 @@ export default ChatlistPage;
 const ChatlistWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   align-items: center;
   justify-content: center;
+  height: auto;
+  font-color: white;
 `;
 
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
+  height: auto;
+  font-color: white;
+  padding: 0.8rem;
 `;
 
 const ButtonWrapper = styled.div`
