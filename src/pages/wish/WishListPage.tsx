@@ -71,6 +71,7 @@ export default WishListPage;
 const WishListWrapper = styled.div`
   margin-top: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 `;
 
