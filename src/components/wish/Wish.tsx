@@ -1,13 +1,22 @@
+import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 interface ComponentProps {
   title: string;
+  id: number;
 }
 
-const Wish: React.FC<ComponentProps> = ({ title }) => {
+const Wish: React.FC<ComponentProps> = ({ title, id }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/detail/${id}`);
+  };
+
   return (
     <WishWrapper>
-      <WishTitle>{title}</WishTitle>
+      <WishTitle onClick={handleClick}>{title}</WishTitle>
     </WishWrapper>
   );
 };
@@ -20,7 +29,7 @@ const WishWrapper = styled.div`
   margin-bottom: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer; // 마우스 포인터가 손가락 모양으로 변하도록 설정
+  cursor: pointer;
 `;
 
 const WishTitle = styled.div`

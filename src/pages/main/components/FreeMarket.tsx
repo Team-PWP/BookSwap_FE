@@ -29,7 +29,7 @@ const FreeMarket: React.FC = () => {
   const [stompClient, setStompClient] = useState<Client | null>(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<
-    { Nickname: string; message: string }[]
+    { Nickname: string; message: string; createdAt: string }[]
   >([]);
 
   useEffect(() => {
@@ -82,6 +82,7 @@ const FreeMarket: React.FC = () => {
             {
               Nickname: receivedMessage.nickname,
               message: receivedMessage.message,
+              createdAt: receivedMessage.createdAt,
             },
           ]);
         });
@@ -133,6 +134,7 @@ const FreeMarket: React.FC = () => {
                 <OpenChatBox
                   Nickname={log.nickname}
                   message={log.message}
+                  date={log.createdAt}
                   key={`chatLog-${index}`}
                 />
               )
@@ -143,6 +145,7 @@ const FreeMarket: React.FC = () => {
                 <OpenChatBox
                   Nickname={msg.Nickname}
                   message={msg.message}
+                  date={msg.createdAt}
                   key={`messages-${index}`}
                 />
               )

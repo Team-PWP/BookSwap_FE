@@ -59,7 +59,7 @@ const WishListPage: React.FC = () => {
       </WishlistHeader>
       <WishListWrapper>
         {wishlist.map((wish) => (
-          <Wish key={wish.wishId} title={wish.title} />
+          <Wish key={wish.wishId} title={wish.title} id={wish.articleId} />
         ))}
       </WishListWrapper>
     </GlobalLayout>
