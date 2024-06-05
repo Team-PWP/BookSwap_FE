@@ -80,4 +80,5 @@ const DateContainer = styled.div`
 const TimeWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 3px;
 `;

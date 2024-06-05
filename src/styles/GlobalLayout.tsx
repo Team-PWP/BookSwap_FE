@@ -32,7 +32,6 @@ export const PCLayout = styled.div`
 `;
 
 const GlobalFreeMarketLayout = styled.div`
-  text-align: center;
   display: flex;
   flex-direction: column;
   flex-direction: flex-start;
