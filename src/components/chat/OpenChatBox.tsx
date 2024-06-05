@@ -51,17 +51,17 @@ const DetailWrapper = styled.div`
 
 const NickContainer = styled.div<{ isSame: boolean }>`
   border-radius: 10px;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   margin-bottom: 5px;
-  align-items: center;
+  align-items: left;
   justify-content: center;
 `;
 
 const DateContainer = styled.div`
   border-radius: 10px;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   margin-bottom: 5px;
-  align-items: center;
+  align-items: left;
   justify-content: center;
 `;
 
