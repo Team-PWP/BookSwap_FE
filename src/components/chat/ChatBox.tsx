@@ -4,19 +4,41 @@ import styled from '@emotion/styled';
 interface ChatProps {
   Nickname: string;
   message: string;
+  date: string;
 }
 
-const ChatBox: React.FC<ChatProps> = ({ Nickname, message }) => {
+const ChatBox: React.FC<ChatProps> = ({ Nickname, message, date }) => {
   const { nickname } = useUserInfoStore((state) => state);
 
   const isSameNickname = () => {
     return Nickname === nickname;
   };
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}.${month}.${day}`;
+  };
+
+  const formatTime = (dateString: string) => {
+    const date = new Date(dateString);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <ChatBoxWrapper>
       <NickContainer isSame={isSameNickname()}>{Nickname}</NickContainer>
-      <MsgContainer isSame={isSameNickname()}>{message}</MsgContainer>
+      <DetailWrapper>
+        <MsgContainer isSame={isSameNickname()}>{message}</MsgContainer>
+        <TimeWrapper>
+          <DateContainer>{formatDate(date)}</DateContainer>
+          <DateContainer>{formatTime(date)}</DateContainer>
+        </TimeWrapper>
+      </DetailWrapper>
     </ChatBoxWrapper>
   );
 };
@@ -40,4 +62,22 @@ const MsgContainer = styled.div<{ isSame: boolean }>`
   font-size: 1.2rem;
   padding: 6px 10px;
   margin-bottom: 10px;
+`;
+
+const DetailWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  margin-left: 3px;
+`;
+
+const DateContainer = styled.div`
+  border-radius: 10px;
+  font-size: 0.8rem;
+  align-items: left;
+`;
+
+const TimeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

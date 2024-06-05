@@ -36,7 +36,7 @@ const ChattingPage: React.FC = () => {
   const [stompClient, setStompClient] = useState<Client | null>(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<
-    { Nickname: string; message: string }[]
+    { Nickname: string; message: string; createdAt: string }[]
   >([]);
 
   useEffect(() => {
@@ -89,6 +89,7 @@ const ChattingPage: React.FC = () => {
             {
               Nickname: receivedMessage.nickname,
               message: receivedMessage.message,
+              createdAt: receivedMessage.createdAt,
             },
           ]);
         });
@@ -143,6 +144,7 @@ const ChattingPage: React.FC = () => {
                   Nickname={log.nickname}
                   message={log.message}
                   key={`chatLog-${index}`}
+                  date={log.createdAt}
                 />
               )
           )}
@@ -153,6 +155,7 @@ const ChattingPage: React.FC = () => {
                   Nickname={msg.Nickname}
                   message={msg.message}
                   key={`messages-${index}`}
+                  date={msg.createdAt}
                 />
               )
           )}

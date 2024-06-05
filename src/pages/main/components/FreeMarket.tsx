@@ -193,4 +193,5 @@ const ChatRoomMain = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  align-items: left;
 `;
