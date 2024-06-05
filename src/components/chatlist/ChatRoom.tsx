@@ -7,10 +7,9 @@ import styled from 'styled-components';
 interface ChatRoomProps {
   id: number;
   name: string;
-  lastMessage: string;
 }
 
-const ChatRoom: React.FC<ChatRoomProps> = ({ id, name, lastMessage }) => {
+const ChatRoom: React.FC<ChatRoomProps> = ({ id, name }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -20,7 +19,6 @@ const ChatRoom: React.FC<ChatRoomProps> = ({ id, name, lastMessage }) => {
   return (
     <ChatRoomWrapper onClick={handleClick}>
       <ChatTitle>{name}</ChatTitle>
-      <LastMessage>{lastMessage}</LastMessage>
     </ChatRoomWrapper>
   );
 };
@@ -41,9 +39,4 @@ const ChatTitle = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-`;
-
-const LastMessage = styled.div`
-  font-size: 1rem;
-  color: #666;
 `;

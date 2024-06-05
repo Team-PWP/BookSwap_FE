@@ -30,6 +30,7 @@ const WishWrapper = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  width: 90%;
 `;
 
 const WishTitle = styled.div`

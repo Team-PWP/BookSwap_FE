@@ -56,7 +56,6 @@ const ChatlistPage: React.FC = () => {
             key={room.chatRoomId}
             id={room.chatRoomId}
             name={room.title}
-            lastMessage={`Article ID: ${room.articleId}`}
           />
         ))}
       </ChatlistWrapper>
@@ -67,19 +66,14 @@ const ChatlistPage: React.FC = () => {
 export default ChatlistPage;
 
 const ChatlistWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: auto;
+  margin-top: 1rem;
 `;
 
 const HeaderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: auto;
   font-size: 1.2rem;
   margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
 `;
 
 const ButtonWrapper = styled.div`
