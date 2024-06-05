@@ -22,7 +22,7 @@ const OpenChatBox: React.FC<ChatProps> = ({ Nickname, message, date }) => {
     const day = date.getDate().toString().padStart(2, '0');
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
-    return `${year}.${month}.${day} | ${hours}:${minutes}`;
+    return `${year}.${month}.${day}|${hours}:${minutes}`;
   };
 
   return (
@@ -47,6 +47,7 @@ const ChatBoxWrapper = styled.div`
 const DetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 const NickContainer = styled.div<{ isSame: boolean }>`
@@ -54,15 +55,12 @@ const NickContainer = styled.div<{ isSame: boolean }>`
   font-size: 0.8rem;
   margin-bottom: 5px;
   align-items: left;
-  justify-content: center;
 `;
 
 const DateContainer = styled.div`
   border-radius: 10px;
-  font-size: 0.8rem;
-  margin-bottom: 5px;
+  font-size: 0.6rem;
   align-items: left;
-  justify-content: center;
 `;
 
 const MsgContainer = styled.div<{ isSame: boolean }>`
