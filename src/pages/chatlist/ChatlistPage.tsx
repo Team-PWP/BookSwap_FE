@@ -67,6 +67,9 @@ export default ChatlistPage;
 
 const ChatlistWrapper = styled.div`
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const HeaderWrapper = styled.div`
