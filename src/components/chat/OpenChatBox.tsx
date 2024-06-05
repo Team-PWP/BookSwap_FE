@@ -47,7 +47,8 @@ const ChatBoxWrapper = styled.div`
 const DetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: left;
+  margin-left: 3px;
 `;
 
 const NickContainer = styled.div<{ isSame: boolean }>`
